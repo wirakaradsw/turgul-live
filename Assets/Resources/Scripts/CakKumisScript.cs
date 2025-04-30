@@ -25,13 +25,28 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
         if (manager.TargetVisible(manager.mainCam, gameObject))
         {
             manager.cloudButton[0].SetActive(false);
+            manager.cloudButton[8].SetActive(false);
         }
         else
         {
             if (!manager.fight)
-                manager.cloudButton[0].SetActive(true);
+            {
+                if (manager.player1.transform.position.x < 0)
+                {
+                    manager.cloudButton[0].SetActive(true);
+                    manager.cloudButton[8].SetActive(false);
+                }
+                else
+                {
+                    manager.cloudButton[0].SetActive(false);
+                    manager.cloudButton[8].SetActive(true);
+                }                   
+            }
             else
+            {
                 manager.cloudButton[0].SetActive(false);
+                manager.cloudButton[8].SetActive(false);
+            }               
         }
 
     }

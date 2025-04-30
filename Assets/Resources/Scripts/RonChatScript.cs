@@ -29,7 +29,7 @@ public class RonChatScript : MonoBehaviour, IPointerDownHandler {
         }
         else
         {
-            if (transform.position.z == 2f)
+            if (transform.position.z == 2f && !manager.fight)
                 manager.cloudButton[4].SetActive(true);
         }
 

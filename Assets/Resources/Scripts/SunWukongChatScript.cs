@@ -29,7 +29,7 @@ public class SunWukongChatScript : MonoBehaviour, IPointerDownHandler {
         }
         else
         {
-            if (transform.position.z == 2f)
+            if (transform.position.z == 2f && !manager.fight)
                 manager.cloudButton[7].SetActive(true);
         }
 

@@ -29,7 +29,7 @@ public class KitaroScript : MonoBehaviour, IPointerDownHandler {
         }
         else
         {
-            if (transform.position.z == 2f)
+            if (transform.position.z == 2f && !manager.fight)
                 manager.cloudButton[5].SetActive(true);
         }
 
