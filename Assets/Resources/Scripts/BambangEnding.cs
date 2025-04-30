@@ -4,9 +4,9 @@ using System.Collections;
 
 public class BambangEnding : MonoBehaviour {
 
-	int timerR = 0;
-	int timerL = 0;
-	public int timerMax;
+	float timerR = 0;
+	float timerL = 0;
+	public float timerMax;
 
 	public GameObject bonang;
 	public GameObject nk;
@@ -65,12 +65,12 @@ public class BambangEnding : MonoBehaviour {
 
 		PlayerPrefs.SetInt ("quickMode", quickMode ? 1 : 0);
 
-		if (timerR == 0 && bowR) {
+		if (timerR <= 0 && bowR) {
 			bowR = false;
 			timerR = timerMax;
 		}
 
-		if (timerL == 0 && !bowR) {
+		if (timerL <= 0 && !bowR) {
 			bowR = true;
 			timerL = timerMax;
 		}
@@ -79,17 +79,17 @@ public class BambangEnding : MonoBehaviour {
 			anim.SetInteger ("FightMove", 1);
 		}
 
-		if (timerR == 10 || timerL == 10) {
+		if (timerR <= 10 || timerL <= 10) {
 			anim.SetInteger ("FightMove", 0);
 		}
 	
 		if (bowR) {
 			transform.localScale = new Vector3 (1, 1, 1);
-			timerR --;
+            timerR -= Time.deltaTime * 50f;
 		} else {
 			transform.localScale = new Vector3 (-1, 1, 1);
-			timerL --;
-		}
+			timerL -= Time.deltaTime * 50f;
+        }
 
 	}
 

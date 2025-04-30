@@ -15,18 +15,18 @@ public class Player1Script : MonoBehaviour {
 	GameObject patrick;
 	GameObject superScene;
 
-	int sAttackTimer = 100;
-	int sAttackTimerMax = 100;
-	int sAttack3Timer = 40;
-	int sAttack3TimerMax = 40;
+	float sAttackTimer = 100;
+	float sAttackTimerMax = 100;
+	float sAttack3Timer = 40;
+	float sAttack3TimerMax = 40;
 
-	int p1StandUpTimer = 40;
-	int p1StandUpTimerMax = 40;
-	int p1WalkTimer = 40;
-	int p1WalkTimerMax = 40;
+	float p1StandUpTimer = 40;
+	float p1StandUpTimerMax = 40;
+	float p1WalkTimer = 40;
+	float p1WalkTimerMax = 40;
 
-	int p1BowEndTimer = 80;
-	int p1BowEndTimerMax = 80;
+	float p1BowEndTimer = 80;
+	float p1BowEndTimerMax = 80;
 
 	float p1Z = 0f;
 	float maxSpeed = 0.08f;
@@ -52,6 +52,7 @@ public class Player1Script : MonoBehaviour {
 	bool sAttack3 = false;
 	bool sAttackStart = false;
 	bool sAttack3Start = false;
+    bool isSuperBlow = false;
 
 	bool block = false;
 	bool dodge = false;
@@ -176,7 +177,7 @@ public class Player1Script : MonoBehaviour {
 		}
 	}
 
-	public int SAttackTimer {
+	public float SAttackTimer {
 		
 		get {
 			return sAttackTimer;
@@ -186,7 +187,7 @@ public class Player1Script : MonoBehaviour {
 		}
 	}
 
-	public int SAttackTimerMax {
+	public float SAttackTimerMax {
 		
 		get {
 			return sAttackTimerMax;
@@ -196,17 +197,18 @@ public class Player1Script : MonoBehaviour {
 		}
 	}
 
-	public int SAttack3Timer {
+	public float SAttack3Timer {
 		
 		get {
 			return sAttack3Timer;
 		}
 		set {
 			sAttack3Timer = value;
+            isSuperBlow = false;
 		}
 	}
 	
-	public int SAttack3TimerMax {
+	public float SAttack3TimerMax {
 		
 		get {
 			return sAttack3TimerMax;
@@ -221,8 +223,9 @@ public class Player1Script : MonoBehaviour {
 		manager = GameObject.Find("MainController").GetComponent<GameManager> ();
 		patrickScript = GameObject.Find ("Patrick").GetComponent<PatrickScript> ();
 		etcJoystick = GameObject.Find ("DynamicJoystick").GetComponent<ETCJoystick> ();
+        joystick.SetActive(false);
 
-		transform.position = new Vector3 (0, 0, 0);
+        transform.position = new Vector3 (0, 0, 0);
 
 	}
 
@@ -237,7 +240,7 @@ public class Player1Script : MonoBehaviour {
 		anim = manager.anim;
 		patrickAnim = manager.patrickAnim;
 
-		joystick.SetActive (false);
+		//joystick.SetActive (false);
 
 		if (Time.timeScale != 0) {
 
@@ -424,10 +427,10 @@ public class Player1Script : MonoBehaviour {
 
 			if (sAttackStart) {
 				superScene.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-				sAttackTimer --;
+				sAttackTimer -= Time.deltaTime * 100f;
 			}
 
-			if (sAttackTimer == 0) {
+			if (sAttackTimer <= 0) {
 				sAttackStart = false;
 				if (sAttack1) {
 					anim.SetInteger ("FightMove", 10);
@@ -450,10 +453,11 @@ public class Player1Script : MonoBehaviour {
 			}
 
 			if (sAttack3Start) {
-				sAttack3Timer--;
+				sAttack3Timer -= Time.deltaTime * 100f;
 			}
 
-			if (sAttack3Timer == 5) {
+			if (sAttack3Timer < 5f && !isSuperBlow) {
+                isSuperBlow = true;
 				Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (transform.position.x + 3f, -0.2f, transform.position.z), Quaternion.identity);
 				manager.swipSound.Play ();
 			}
@@ -527,7 +531,7 @@ public class Player1Script : MonoBehaviour {
 				StartCoroutine ("HitTextFadeOut");
 			}
 
-			if (patrickScript.P2SAttack3Timer == 0) {
+			if (patrickScript.P2SAttack3Timer <= 0) {
 				patrickScript.P2SAttack3Start = false;
 				if (block) {
 					anim.SetInteger ("FightMove", 5); // --- P1 blocks
@@ -611,10 +615,10 @@ public class Player1Script : MonoBehaviour {
 			}
 		
 			if (p1StandUpStart) {
-				p1StandUpTimer--;
+                p1StandUpTimer -= Time.deltaTime * 100f; 
 			}
 		
-			if (p1StandUpTimer == 0) {
+			if (p1StandUpTimer <= 0) {
 				p1StandUpStart = false;
 				anim.SetInteger ("FightMove", 15); //--- Stand up
 				if (patrickScript.P2SAttack3) {
@@ -630,10 +634,10 @@ public class Player1Script : MonoBehaviour {
 			}
 		
 			if (p1WalkStart) {
-				p1WalkTimer--;
+				p1WalkTimer -= Time.deltaTime * 100f;
 			}
 		
-			if (p1WalkTimer == 0) {
+			if (p1WalkTimer <= 0) {
 				p1WalkStart = false;
 				anim.SetInteger ("FightMove", 16);
 				p1WalkTimer = p1WalkTimerMax;
@@ -669,10 +673,10 @@ public class Player1Script : MonoBehaviour {
 			}
 		
 			if (p1BowEnd) {
-				p1BowEndTimer--;
+				p1BowEndTimer -= Time.deltaTime * 100f;
 			}
 		
-			if (p1BowEndTimer == 0) {
+			if (p1BowEndTimer <= 0) {
 				p1BowEnd = false;
 				anim.SetInteger ("FightMove", 1);
 
@@ -709,5 +713,23 @@ public class Player1Script : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+    public void OnMoveLeft (bool isMove)
+    {
+        if (isMove)
+        {
+            p1MoveX = true;
+            if (!chat)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else
+        {
+            p1MoveX = false;
+            anim.SetBool("Walk", false);
+        }
+        
+    }
 
 }

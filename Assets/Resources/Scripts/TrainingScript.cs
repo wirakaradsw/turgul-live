@@ -7,13 +7,17 @@ public class TrainingScript : MonoBehaviour {
 	P1TrainingScript p1Script;
 
 	public GameObject player1;
+    public GameObject cloudButton;
 	GameObject gletser;
 	GameObject bajay;
 	GameObject camera1;
 	GameObject blackTop;
 	GameObject blackBottom;
 
-	public GameObject spark;
+    public GameObject hitFxPool;
+    public GameObject[] hitFx;
+
+    public GameObject spark;
 	public GameObject dust;
 	public GameObject cosmo;
 	
@@ -55,21 +59,21 @@ public class TrainingScript : MonoBehaviour {
 	public AudioSource debu2Intan;
 	public AudioSource waahVoice;
 
-	int readyToFightTimer = 80;
-	int readyToFightTimerMax = 80;
-	int fightStartTimer = 40;
-	int fightStartTimerMax = 40;
-	int p2ActionTimer = 40;
-	int p2ActionTimerInit = 40;
-	int addDefBarTimer = 100;
-	int addDefBarTimerInit = 100;
-	int chap2ProlEndTimer = 80;
-	int chap2ProlEndTimerMax = 80;
+	float readyToFightTimer = 80;
+    float readyToFightTimerMax = 80;
+    float fightStartTimer = 40;
+    float fightStartTimerMax = 40;
+    float p2ActionTimer = 40;
+    float p2ActionTimerInit = 40;
+    float addDefBarTimer = 100;
+    float addDefBarTimerInit = 100;
+    float chap2ProlEndTimer = 80;
+    float chap2ProlEndTimerMax = 80;
 	int p1RanAttack = 0;
 	int p2RanAttack = 0;
 
-	int strollingTimer = 200;
-	int strollingTimerMax = 200;
+    float strollingTimer = 200;
+    float strollingTimerMax = 200;
 
 	int attackVoice1 = 0;
 	int attackVoice2 = 0;
@@ -121,8 +125,8 @@ public class TrainingScript : MonoBehaviour {
 	public bool success = false;
 
 	bool dustStart = false;
-	int dustStartTimer = 80;
-	int dustStartTimerMax = 80;
+	float dustStartTimer = 80;
+	float dustStartTimerMax = 80;
 
 	Vector3 savePositionP1;
 	Vector3 savePositionP2;
@@ -136,10 +140,6 @@ public class TrainingScript : MonoBehaviour {
 	public Image loadingBar;
 	public Text loadingText;
 	
-	void Awake (){
-
-	
-	}
 
 	void Start () {
 
@@ -147,6 +147,7 @@ public class TrainingScript : MonoBehaviour {
 		p1HBarX = PlayerPrefs.GetFloat ("p1HBarX");
 		notFirstTime = PlayerPrefs.GetInt ("notFirstTime") > 0;
 		success = PlayerPrefs.GetInt ("success") > 0;
+        //success = false;    //Activate it to reset training
 
 		p1Script = GameObject.Find ("Bambang").GetComponent<P1TrainingScript> ();
 
@@ -230,54 +231,8 @@ public class TrainingScript : MonoBehaviour {
 
 			if (player1.transform.position.x < gletser.transform.position.x + 3f && player1.transform.position.x > gletser.transform.position.x - 3f &&
 				player1.transform.position.z == gletser.transform.position.z && !chat) {
-				p1Script.joystick.SetActive (false);
-				chat = true;
-				screenSrink = true;
-				screenEnlarge = false;
-				screenShut = false;
 
-				panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
-				if (!notFirstTime && !success) {
-					panelText.text = "GLETSER:\n\n" +
-						"So you want to become stronger ey?\nI can train you to master the COSMO POWER. " +
-						"Don't worry, my training is free." +
-						"\nYou just need to buy one cup of my ICE CREAM for $20 before we start the training." +
-						"\nWhat say you?";
-				} else if (notFirstTime && !success) {
-					panelText.text = "GLETSER:\n\n" +
-						"So you wanna have another training session ey?" +
-						"\nNo problem. Just buy one cup of my ICE CREAM for $20 first before we start the training.";
-				} else if (notFirstTime && success) {
-					panelText.text = "GLETSER:\n\n" +
-						"Because you have now mastered the COSMO POWER, I give you DISCOUNT 50% off from the price for a cup of ICE CREAM." +
-						"\nSo,do you wanna buy ICE CREAM?";
-				}
-
-				if (player1.transform.position.x > gletser.transform.position.x) {
-					player1.transform.position = new Vector3 (gletser.transform.position.x + 3f, player1.transform.position.y, player1.transform.position.z);
-					if (player1.transform.localScale.x == 1) {
-						player1.transform.localScale = new Vector3 (-1, 1, 1);
-					}
-				}
-				if (player1.transform.position.x < gletser.transform.position.x) {
-					player1.transform.position = new Vector3 (gletser.transform.position.x - 3f, player1.transform.position.y, player1.transform.position.z);
-					gletser.transform.localScale = new Vector3 (-1, 1, 1);
-					if (player1.transform.localScale.x == -1) {
-						player1.transform.localScale = new Vector3 (1, 1, 1);
-					}
-				}
-
-				satayButton.GetComponentInChildren<Text> ().text = "OK";
-				leaveButton.GetComponentInChildren<Text> ().text = "No Thanks";
-				leaveButton.GetComponentInChildren<Text> ().fontSize = 14;
-				if ((!success && moneyPoint >= 30) || (success && moneyPoint >= 20)) {
-					satayButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (-140, 6);
-				} else if ((!success && moneyPoint < 30) || (success && moneyPoint < 20)) {
-					leaveButton.GetComponentInChildren<Text> ().text = "I don't have enough money";
-					leaveButton.GetComponentInChildren<Text> ().fontSize = 10;
-				}
-				leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
-
+                ChatOn();
 			}
 
 			if (blackTop.transform.position.y < 4.3f) {
@@ -291,6 +246,8 @@ public class TrainingScript : MonoBehaviour {
 				if (fight) {
 
 					notFirstTime = true;
+
+                    cloudButton.SetActive(false);
 				
 					if (player1.transform.position.x > gletser.transform.position.x) {
 						player1.transform.localScale = new Vector3 (1, 1, 1);
@@ -307,7 +264,7 @@ public class TrainingScript : MonoBehaviour {
 				
 					panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 					panelText.text = "GLETSER:\n\n" +
-						"You need to move toward to me by CLICKING THE MOUSE RAPIDLY while I attack you with my SPECIAL TECHNIC." +
+						"You need to move toward to me by TAPPING THE SCREEN RAPIDLY while I attack you with my SPECIAL TECHNIC." +
 						"\nYour aim is to reach to this white line in front of me." +
 						"\nYou will then attack me with one punch." +
 						"\nARE YOU READY?!!";
@@ -361,9 +318,9 @@ public class TrainingScript : MonoBehaviour {
 			}
 
 			if (dustStart) {
-				dustStartTimer --;
+				dustStartTimer -= Time.deltaTime * 50f;
 			}
-			if (dustStartTimer == 0) {
+			if (dustStartTimer <= 0) {
 				dustStart = false;
 				dust.SetActive (true);
 				swipSound.Play ();
@@ -371,22 +328,33 @@ public class TrainingScript : MonoBehaviour {
 				training = true;
 				p1HBarFrame.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (p1HBarFrame.GetComponentInChildren<RectTransform> ().anchoredPosition.x, -20f);
 				dustStartTimer = dustStartTimerMax;
-			}
+                hitFxPool.SetActive(true);
+            }
 
 			if (training) {
 
-				p1HBar.rectTransform.sizeDelta = new Vector2 (p1HBar.GetComponent<RectTransform> ().rect.width - 1f, p1HBar.GetComponent<RectTransform> ().rect.height);
+				p1HBar.rectTransform.sizeDelta = new Vector2 (p1HBar.GetComponent<RectTransform> ().rect.width - 8f * Time.deltaTime, p1HBar.GetComponent<RectTransform> ().rect.height);
 
-				player1.transform.position = new Vector3 (player1.transform.position.x - 0.1f, player1.transform.position.y, player1.transform.position.z);
+				player1.transform.position = new Vector3 (player1.transform.position.x - 1f * Time.deltaTime, player1.transform.position.y, player1.transform.position.z);
 				Instantiate (Resources.Load ("Prefabs/BambangShadow"), new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
 
 				if (Input.GetMouseButtonDown (0)) {
 				
 					Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-					if (Physics.Raycast (ray, out hit)) {
+                    for (int i = 0; i < hitFx.Length; i++)
+                    {
+                        if (!hitFx[i].GetComponent<Animation>().isPlaying)
+                        {
+                            hitFx[i].transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                            hitFx[i].GetComponent<Animation>().Play();
+                            break;
+                        }
+                    }
+
+                    if (Physics.Raycast (ray, out hit)) {
 						if (hit.collider.gameObject.name == ("ClickArea")) {
 						
-							player1.transform.position = new Vector3 (player1.transform.position.x + 1f, player1.transform.position.y, player1.transform.position.z);
+							player1.transform.position = new Vector3 (player1.transform.position.x + 20f * Time.deltaTime, player1.transform.position.y, player1.transform.position.z);
 						
 						}
 					}
@@ -425,18 +393,18 @@ public class TrainingScript : MonoBehaviour {
 			}
 
 			if (strollingStart) {
-				strollingTimer--;
+				strollingTimer -= Time.deltaTime *100f;
 			}
 		
-			if (strollingTimer == 0) {
+			if (strollingTimer <= 0) {
 				strollingStart = false;
 				screenShut = true;
 				screenEnlarge = false;
 				Initial ();
 				fight = false;
 				p1Script.joystick.SetActive (true);
-			
-				strollingTimer = strollingTimerMax;
+                hitFxPool.SetActive(false);
+                strollingTimer = strollingTimerMax;
 			}
 
 		}
@@ -562,6 +530,8 @@ public class TrainingScript : MonoBehaviour {
 				player1.transform.position = new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z + 1f);
 				bajayStop = false;
 			}
+
+            cloudButton.SetActive(true);
 		}
 		
 	}
@@ -652,7 +622,79 @@ public class TrainingScript : MonoBehaviour {
 
 	}
 
-	public void OnClickedBack (Button backButton) {
+    void ChatOn ()
+    {
+        p1Script.joystick.SetActive(false);
+        chat = true;
+        screenSrink = true;
+        screenEnlarge = false;
+        screenShut = false;
+
+        panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        if (!notFirstTime && !success)
+        {
+            panelText.text = "GLETSER:\n\n" +
+                "So you want to become stronger ey?\nI can train you to master the COSMO POWER. " +
+                "Don't worry, my training is free." +
+                "\nYou just need to buy one cup of my ICE CREAM for $20 before we start the training." +
+                "\nWhat say you?";
+        }
+        else if (notFirstTime && !success)
+        {
+            panelText.text = "GLETSER:\n\n" +
+                "So you wanna have another training session ey?" +
+                "\nNo problem. Just buy one cup of my ICE CREAM for $20 first before we start the training.";
+        }
+        else if (notFirstTime && success)
+        {
+            panelText.text = "GLETSER:\n\n" +
+                "Because you have now mastered the COSMO POWER, I give you DISCOUNT 50% off from the price for a cup of ICE CREAM." +
+                "\nSo,do you wanna buy ICE CREAM?";
+        }
+
+        if (player1.transform.position.x > gletser.transform.position.x)
+        {
+            player1.transform.position = new Vector3(gletser.transform.position.x + 3f, player1.transform.position.y, gletser.transform.position.z);
+            if (player1.transform.localScale.x == 1)
+            {
+                player1.transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        if (player1.transform.position.x < gletser.transform.position.x)
+        {
+            player1.transform.position = new Vector3(gletser.transform.position.x - 3f, player1.transform.position.y, gletser.transform.position.z);
+            gletser.transform.localScale = new Vector3(-1, 1, 1);
+            if (player1.transform.localScale.x == -1)
+            {
+                player1.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+
+        satayButton.GetComponentInChildren<Text>().text = "OK";
+        leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
+        leaveButton.GetComponentInChildren<Text>().fontSize = 14;
+        if ((!success && moneyPoint >= 30) || (success && moneyPoint >= 20))
+        {
+            satayButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(-140, 6);
+        }
+        else if ((!success && moneyPoint < 30) || (success && moneyPoint < 20))
+        {
+            leaveButton.GetComponentInChildren<Text>().text = "I don't have enough money";
+            leaveButton.GetComponentInChildren<Text>().fontSize = 10;
+        }
+        leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
+    }
+
+    public void OnChatWithGletser()
+    {
+        if (!fight)
+        {
+            ChatOn();
+
+        }
+    }
+
+    public void OnClickedBack (Button backButton) {
 
 		if (Time.timeScale != 0) {
 			chachingSound.Play ();

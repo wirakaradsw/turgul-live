@@ -10,22 +10,22 @@ public class PatrickScript : MonoBehaviour {
 	GameObject player1;
 	GameObject superScene;
 
-	int p2SAttInitiationTimer = 40;
-	int p2SAttInitiationTimerMax = 40;
+	float p2SAttInitiationTimer = 40;
+	float p2SAttInitiationTimerMax = 40;
 	int p2SAttAction = 0;
-	int p2SAttackTimer = 100;
-	int p2SAttackTimerMax = 100;
-	int p2SAttack3Timer = 40;
-	int p2SAttack3TimerMax = 40;
+	float p2SAttackTimer = 100;
+	float p2SAttackTimerMax = 100;
+	float p2SAttack3Timer = 40;
+	float p2SAttack3TimerMax = 40;
 
 	int p2DefAction = 0;
-	int comStandUpTimer = 40;
-	int comStandUpTimerMax = 40;
-	int comWalkTimer = 40;
-	int comWalkTimerMax = 40;
+	float comStandUpTimer = 40;
+	float comStandUpTimerMax = 40;
+	float comWalkTimer = 40;
+	float comWalkTimerMax = 40;
 
-	int p2BowEndTimer = 80;
-	int p2BowEndTimerMax = 80;
+	float p2BowEndTimer = 80;
+	float p2BowEndTimerMax = 80;
 
 	float defPoint = 20f;
 	float attPoint = 8f;
@@ -38,6 +38,7 @@ public class PatrickScript : MonoBehaviour {
 	bool p2SAttack3 = false;
 	bool p2SAttackStart = false;
 	bool p2SAttack3Start = false;
+    bool isSuperBlow = false;
 
 	bool comBlock = false;
 	bool comDodge = false;
@@ -52,17 +53,18 @@ public class PatrickScript : MonoBehaviour {
 	Animator anim;
 	Animator patrickAnim;
 
-	public int P2SAttack3Timer {
+	public float P2SAttack3Timer {
 		
 		get {
 			return p2SAttack3Timer;
 		}
 		set {
 			p2SAttack3Timer = value;
+            isSuperBlow = false;
 		}
 	}
 	
-	public int P2SAttack3TimerMax {
+	public float P2SAttack3TimerMax {
 		
 		get {
 			return p2SAttack3TimerMax;
@@ -138,59 +140,27 @@ public class PatrickScript : MonoBehaviour {
 			}
 		
 			if (player1.transform.position.x < transform.position.x + 3f && player1.transform.position.x > transform.position.x - 3f && player1.transform.position.z == transform.position.z && !manager.fight) {
-				p1Script.joystick.SetActive (false);
-				manager.chat = true;
-				manager.screenSrink = true;
-				manager.screenEnlarge = false;
-				manager.screenShut = false;
-
-				manager.leaveButton.GetComponentInChildren<Text> ().text = "Leave";
-				manager.leaveButton.GetComponentInChildren<Text> ().fontSize = 14;
-
-				manager.panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
-
-				if (player1.transform.position.x > transform.position.x) {
-					player1.transform.position = new Vector3 (transform.position.x + 3f, player1.transform.position.y, player1.transform.position.z);
-					if (p1Script.transform.localScale.x == 1) {
-						p1Script.transform.localScale = new Vector3 (-1, 1, 1);
-					}
-				}
-				if (player1.transform.position.x < transform.position.x) {
-					player1.transform.position = new Vector3 (transform.position.x - 3f, player1.transform.position.y, player1.transform.position.z);
-					if (p1Script.transform.localScale.x == -1) {
-						p1Script.transform.localScale = new Vector3 (1, 1, 1);
-					}
-				}
-
-				if (manager.p1HBar.GetComponent<RectTransform> ().rect.width < 300 && !manager.moneyChecked) {
-					manager.panelText.text = "PATRICK:\n" +
-						"Aw Bro!\nYou don't look well...\nGet something to eat Bro...";
-					manager.leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
-					if (manager.moneyPoint < 15) {
-						manager.moneyDynamicPoint = 15 - manager.moneyPoint;
-						manager.moneyPoint = manager.moneyPoint + manager.moneyDynamicPoint;
-						manager.moneyAppearPlus = true;
-						manager.gotSomethingSound.Play ();
-					}
-					manager.moneyChecked = true;
-				} else {
-					manager.panelText.text = "PATRICK:\n" +
-						"Yo Bro!\nCare to have a sparring match with me?\nIf you WIN, I'll make sure you can enter the TOURNAMENT.\nWell if you LOSE, don't worry, I'll buy you SATAY...";
-					manager.fightButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (-140, 6);
-					manager.leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
-					manager.fightButton.GetComponentInChildren<Text> ().text = "OK";
-					manager.leaveButton.GetComponentInChildren<Text> ().text = "No Thanks";
-				}
+                ChatOn();
 			}
 
-			// --- Patrick initiates Super Attacks ---
-			if (manager.p2Att1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && manager.fighting) { 
+            if (manager.TargetVisible(manager.mainCam, gameObject))
+            {
+                manager.cloudButton[3].SetActive(false);
+            }
+            else
+            {
+                if (transform.position.z == 2f)
+                    manager.cloudButton[3].SetActive(true);
+            }
 
-				p2SAttInitiationTimer--;
+            // --- Patrick initiates Super Attacks ---
+            if (manager.p2Att1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && manager.fighting) { 
+
+				p2SAttInitiationTimer -= Time.deltaTime * 100f;
 
 			}
 
-			if (p2SAttInitiationTimer == 0) {
+			if (p2SAttInitiationTimer <= 0) {
 				p2SAttAction = Random.Range (1, 11);
 				p2SAttInitiationTimer = p2SAttInitiationTimerMax;
 			}
@@ -296,10 +266,10 @@ public class PatrickScript : MonoBehaviour {
 		
 			if (p2SAttackStart) {
 				superScene.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-				p2SAttackTimer --;
+				p2SAttackTimer -= Time.deltaTime * 100f;
 			}
 
-			if (p2SAttackTimer == 5) {
+			if (p2SAttackTimer <= 5f && p2SAttackTimer > 4f) {
 				anim.SetInteger ("FightMove", 2);
 				manager.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (manager.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				manager.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (manager.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -307,7 +277,7 @@ public class PatrickScript : MonoBehaviour {
 				manager.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (manager.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 			}
 		
-			if (p2SAttackTimer == 0) {
+			if (p2SAttackTimer <= 0) {
 				p2SAttackStart = false;
 				if (p2SAttack1) {
 					patrickAnim.SetInteger ("PatrickFightMove", 10);
@@ -330,16 +300,17 @@ public class PatrickScript : MonoBehaviour {
 			}
 
 			if (p2SAttack3Start) {
-				p2SAttack3Timer--;
+				p2SAttack3Timer -= Time.deltaTime * 100f;
 			}
 
-			if (p2SAttack3Timer == 5) {
+			if (p2SAttack3Timer < 5f && !isSuperBlow) {
+                isSuperBlow = true;
 				Instantiate (Resources.Load ("Prefabs/SuperBlow2"), new Vector3 (transform.position.x - 3f, -0.2f, transform.position.z), Quaternion.identity);
 				manager.swipSound.Play ();
 			}
 
 			// --- Patrick Deffend Actions ---
-			if (p1Script.SAttackTimer == p1Script.SAttackTimerMax * 0.5f) { 
+			if (p1Script.SAttackTimer < p1Script.SAttackTimerMax * 0.5f && p1Script.SAttackTimer > ((p1Script.SAttackTimerMax * 0.5f)-1f) ) { 
 				if (manager.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == -72f && manager.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 50f) {
 					p2DefAction = Random.Range (1, 5);
 					if (p2DefAction == 1 || p2DefAction == 3 || (manager.p2HBar.GetComponent<RectTransform> ().rect.width <= 80)) {
@@ -370,7 +341,7 @@ public class PatrickScript : MonoBehaviour {
 				}
 			}
 		
-			if (p1Script.SAttackTimer == 5) {
+			if (p1Script.SAttackTimer <= 5f && p1Script.SAttackTimer > 4f) {
 				patrickAnim.SetInteger ("PatrickFightMove", 2);
 				manager.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (manager.p2Def1Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				manager.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (manager.p2Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -441,7 +412,7 @@ public class PatrickScript : MonoBehaviour {
 				StartCoroutine ("HitTextFadeOut");
 			}
 
-			if (p1Script.SAttack3Timer == 0) {
+			if (p1Script.SAttack3Timer <= 0) {
 				p1Script.SAttack3Start = false;
 				if (comBlock) {
 					patrickAnim.SetInteger ("PatrickFightMove", 5); // --- Patrick blocks
@@ -525,10 +496,10 @@ public class PatrickScript : MonoBehaviour {
 			}
 		
 			if (comStandUpStart) {
-				comStandUpTimer--;
+				comStandUpTimer -= Time.deltaTime * 100f;
 			}
 		
-			if (comStandUpTimer == 0) {
+			if (comStandUpTimer <= 0) {
 				comStandUpStart = false;
 				patrickAnim.SetInteger ("PatrickFightMove", 15); //--- Stand up
 				if (p1Script.SAttack3) {
@@ -544,10 +515,10 @@ public class PatrickScript : MonoBehaviour {
 			}
 		
 			if (comWalkStart) {
-				comWalkTimer--;
+				comWalkTimer -= Time.deltaTime * 100f;
 			}
 		
-			if (comWalkTimer == 0) {
+			if (comWalkTimer <= 0) {
 				comWalkStart = false;
 				patrickAnim.SetInteger ("PatrickFightMove", 16);
 				comWalkTimer = comWalkTimerMax;
@@ -583,10 +554,10 @@ public class PatrickScript : MonoBehaviour {
 			}
 		
 			if (p2BowEnd) {
-				p2BowEndTimer--;
+				p2BowEndTimer -= Time.deltaTime * 100f;
 			}
 		
-			if (p2BowEndTimer == 0) {
+			if (p2BowEndTimer <= 0) {
 				p2BowEnd = false;
 				patrickAnim.SetInteger ("PatrickFightMove", 1);
 
@@ -617,5 +588,70 @@ public class PatrickScript : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+    void ChatOn()
+    {
+        p1Script.joystick.SetActive(false);
+        manager.chat = true;
+        manager.screenSrink = true;
+        manager.screenEnlarge = false;
+        manager.screenShut = false;
+
+        manager.leaveButton.GetComponentInChildren<Text>().text = "Leave";
+        manager.leaveButton.GetComponentInChildren<Text>().fontSize = 14;
+
+        manager.panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
+        if (player1.transform.position.x > transform.position.x)
+        {
+            player1.transform.position = new Vector3(transform.position.x + 3f, player1.transform.position.y, transform.position.z);
+            if (p1Script.transform.localScale.x == 1)
+            {
+                p1Script.transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        if (player1.transform.position.x < transform.position.x)
+        {
+            player1.transform.position = new Vector3(transform.position.x - 3f, player1.transform.position.y, transform.position.z);
+            if (p1Script.transform.localScale.x == -1)
+            {
+                p1Script.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+
+        if (manager.p1HBar.GetComponent<RectTransform>().rect.width < 300 && !manager.moneyChecked)
+        {
+            manager.panelText.text = "PATRICK:\n" +
+                "Aw Bro!\nYou don't look well...\nGet something to eat Bro...";
+            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
+            if (manager.moneyPoint < 15)
+            {
+                manager.moneyDynamicPoint = 15 - manager.moneyPoint;
+                manager.moneyPoint = manager.moneyPoint + manager.moneyDynamicPoint;
+                manager.moneyAppearPlus = true;
+                manager.gotSomethingSound.Play();
+            }
+            manager.moneyChecked = true;
+        }
+        else
+        {
+            manager.panelText.text = "PATRICK:\n" +
+                "Yo Bro!\nCare to have a sparring match with me?\nIf you WIN, I'll make sure you can enter the TOURNAMENT.\nWell if you LOSE, don't worry, I'll buy you SATAY...";
+            manager.fightButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(-140, 6);
+            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
+            manager.fightButton.GetComponentInChildren<Text>().text = "OK";
+            manager.leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        //Debug.Log("Ron clicked");
+        if (!manager.fight)
+        {
+            ChatOn();
+            manager.blocker.SetActive(true);
+        } 
+    }
 
 }

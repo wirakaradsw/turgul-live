@@ -1,0 +1,513 @@
+-target:library
+-out:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Assembly-CSharp.dll"
+-refout:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Assembly-CSharp.ref.dll"
+-define:UNITY_2022_1_3
+-define:UNITY_2022_1
+-define:UNITY_2022
+-define:UNITY_5_3_OR_NEWER
+-define:UNITY_5_4_OR_NEWER
+-define:UNITY_5_5_OR_NEWER
+-define:UNITY_5_6_OR_NEWER
+-define:UNITY_2017_1_OR_NEWER
+-define:UNITY_2017_2_OR_NEWER
+-define:UNITY_2017_3_OR_NEWER
+-define:UNITY_2017_4_OR_NEWER
+-define:UNITY_2018_1_OR_NEWER
+-define:UNITY_2018_2_OR_NEWER
+-define:UNITY_2018_3_OR_NEWER
+-define:UNITY_2018_4_OR_NEWER
+-define:UNITY_2019_1_OR_NEWER
+-define:UNITY_2019_2_OR_NEWER
+-define:UNITY_2019_3_OR_NEWER
+-define:UNITY_2019_4_OR_NEWER
+-define:UNITY_2020_1_OR_NEWER
+-define:UNITY_2020_2_OR_NEWER
+-define:UNITY_2020_3_OR_NEWER
+-define:UNITY_2021_1_OR_NEWER
+-define:UNITY_2021_2_OR_NEWER
+-define:UNITY_2021_3_OR_NEWER
+-define:UNITY_2022_1_OR_NEWER
+-define:USE_SEARCH_ENGINE_API
+-define:USE_SEARCH_TABLE
+-define:USE_SEARCH_MODULE
+-define:USE_PROPERTY_DATABASE
+-define:USE_QUERY_BUILDER
+-define:USE_SEARCH_EXTENSION_API
+-define:SCENE_TEMPLATE_MODULE
+-define:ENABLE_AR
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_TEXTURE_STREAMING
+-define:ENABLE_UNET
+-define:ENABLE_LZMA
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_VR
+-define:ENABLE_WEBCAM
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_COLLAB
+-define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
+-define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+-define:ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_EDITOR_GAME_SERVICES
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_HUB_LICENSE
+-define:ENABLE_WEBSOCKET_CLIENT
+-define:ENABLE_DIRECTOR_AUDIO
+-define:ENABLE_DIRECTOR_TEXTURE
+-define:ENABLE_MANAGED_JOBS
+-define:ENABLE_MANAGED_TRANSFORM_JOBS
+-define:ENABLE_MANAGED_ANIMATION_JOBS
+-define:ENABLE_MANAGED_AUDIO_JOBS
+-define:ENABLE_RUNTIME_PERMISSIONS
+-define:ENABLE_ENGINE_CODE_STRIPPING
+-define:ENABLE_ONSCREEN_KEYBOARD
+-define:ENABLE_MANAGED_UNITYTLS
+-define:INCLUDE_DYNAMIC_GI
+-define:ENABLE_SCRIPTING_GC_WBARRIERS
+-define:PLATFORM_SUPPORTS_MONO
+-define:ENABLE_VIDEO
+-define:ENABLE_ACCELERATOR_CLIENT_DEBUGGING
+-define:PLATFORM_ANDROID
+-define:TEXTCORE_1_0_OR_NEWER
+-define:UNITY_ANDROID
+-define:UNITY_ANDROID_API
+-define:ENABLE_EGL
+-define:ENABLE_NETWORK
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:UNITY_CAN_SHOW_SPLASH_SCREEN
+-define:UNITY_HAS_GOOGLEVR
+-define:UNITY_HAS_TANGO
+-define:ENABLE_SPATIALTRACKING
+-define:ENABLE_ETC_COMPRESSION
+-define:PLATFORM_EXTENDS_VULKAN_DEVICE
+-define:PLATFORM_HAS_MULTIPLE_SWAPCHAINS
+-define:UNITY_ANDROID_SUPPORTS_SHADOWFILES
+-define:PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP
+-define:ENABLE_UNITYADS_RUNTIME
+-define:UNITY_UNITYADS_API
+-define:ENABLE_MONO
+-define:NET_STANDARD_2_0
+-define:NET_STANDARD
+-define:NET_STANDARD_2_1
+-define:NETSTANDARD
+-define:NETSTANDARD2_1
+-define:DEVELOPMENT_BUILD
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:ENABLE_CUSTOM_RENDER_TEXTURE
+-define:ENABLE_DIRECTOR
+-define:ENABLE_LOCALIZATION
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_TILEMAP
+-define:ENABLE_TIMELINE
+-define:ENABLE_LEGACY_INPUT_MANAGER
+-define:CSHARP_7_OR_LATER
+-define:CSHARP_7_3_OR_NEWER
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Core.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Data.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Drawing.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.IO.Compression.FileSystem.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Net.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Numerics.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Runtime.Serialization.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.ServiceModel.Web.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Transactions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Web.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Windows.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Xml.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Xml.Linq.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Xml.Serialization.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/Microsoft.Win32.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.AppContext.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Buffers.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Collections.Concurrent.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Collections.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Collections.NonGeneric.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Collections.Specialized.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ComponentModel.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ComponentModel.EventBasedAsync.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ComponentModel.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ComponentModel.TypeConverter.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Console.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Data.Common.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.Contracts.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.Debug.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.FileVersionInfo.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.Process.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.StackTrace.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.TextWriterTraceListener.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.Tools.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.TraceSource.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Diagnostics.Tracing.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Drawing.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Dynamic.Runtime.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Globalization.Calendars.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Globalization.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Globalization.Extensions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.Compression.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.Compression.ZipFile.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.FileSystem.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.FileSystem.DriveInfo.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.FileSystem.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.FileSystem.Watcher.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.IsolatedStorage.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.MemoryMappedFiles.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.Pipes.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.IO.UnmanagedMemoryStream.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Linq.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Linq.Expressions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Linq.Parallel.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Linq.Queryable.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Memory.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Http.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.NameResolution.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.NetworkInformation.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Ping.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Requests.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Security.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.Sockets.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.WebHeaderCollection.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.WebSockets.Client.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Net.WebSockets.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Numerics.Vectors.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ObjectModel.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.DispatchProxy.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.Emit.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.Emit.ILGeneration.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.Emit.Lightweight.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.Extensions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Reflection.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Resources.Reader.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Resources.ResourceManager.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Resources.Writer.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.CompilerServices.VisualC.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Extensions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Handles.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.InteropServices.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.InteropServices.RuntimeInformation.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Numerics.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Serialization.Formatters.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Serialization.Json.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Serialization.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Runtime.Serialization.Xml.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Claims.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Cryptography.Algorithms.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Cryptography.Csp.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Cryptography.Encoding.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Cryptography.Primitives.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Cryptography.X509Certificates.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.Principal.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Security.SecureString.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Text.Encoding.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Text.Encoding.Extensions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Text.RegularExpressions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Overlapped.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Tasks.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Tasks.Extensions.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Tasks.Parallel.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Thread.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.ThreadPool.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Threading.Timer.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.ValueTuple.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.ReaderWriter.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XDocument.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlDocument.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlSerializer.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AccessibilityModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AIModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AndroidJNIModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AnimationModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ARModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AssetBundleModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.AudioModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ClothModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.CoreModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.CrashReportingModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.DirectorModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.DSPGraphModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.GameCenterModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.GIModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.GridModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.HotReloadModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ImageConversionModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.IMGUIModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.InputLegacyModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.InputModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.JSONSerializeModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.LocalizationModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ParticleSystemModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.PerformanceReportingModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.Physics2DModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.PhysicsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ProfilerModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.ScreenCaptureModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.SharedInternalsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.SpriteMaskModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.SpriteShapeModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.StreamingModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.SubstanceModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.SubsystemsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TerrainModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TerrainPhysicsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TextCoreFontEngineModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TextCoreTextEngineModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TextRenderingModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TilemapModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.TLSModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UIElementsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UIElementsNativeModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UIModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UmbraModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UNETModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityAnalyticsModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityConnectModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityCurlModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityTestProtocolModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityWebRequestAudioModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityWebRequestModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityWebRequestTextureModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.UnityWebRequestWWWModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.VehiclesModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.VFXModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.VideoModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.VRModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.WindModule.dll"
+-r:"C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Managed/UnityEngine.XRModule.dll"
+-r:"C:/Users/wirak/Documents/Unity/git/turgul-live/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
+-r:"C:/Users/wirak/Documents/Unity/git/turgul-live/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.Services.Core.Analytics.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.Services.Core.Environments.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.Services.Core.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.TextMeshPro.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.Timeline.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.VisualScripting.Core.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.VisualScripting.Flow.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/Unity.VisualScripting.State.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aPDevDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/AdvancedExamples/AutoSelect/MultiLayerTouch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/AdvancedExamples/AutoSelect/MultiLayerUI.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/AdvancedExamples/MultiCamera/MultiCameraTouch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/AdvancedExamples/MultiCamera/MultiCameraUI.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/GameExemple/RTSExample/CubeSelect.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/GameExemple/RTSExample/RTSCamera.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/GameExemple/RunBall/Ball.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/GameExemple/RunBall/BallRunPlayer.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/GameExemple/RunBall/ThirdPersonCamera.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/LoadExamples.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/MultiFinger/FingerTouch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/MultiFinger/MutliFingersScreenTouch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/DoubleTapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/DragMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/LongTapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/Swipe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/TapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/OneFinger/TouchMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/PinchMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TooglePickMethodUI.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwistMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoDoubleTapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoDragMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoLongTapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoSwipe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoTapMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/SimpleExamples/TwoFingers/TwoTouchMe.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UICompatibility/ETWindow.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UICompatibility/GlobalEasyTouchEvent.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UICompatibility/UICompatibility.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UICompatibility/UIWindow.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UITwistPinch/UIDrag.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UITwistPinch/UIPinch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Example/UnityUI/UITwistPinch/UITwist.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/BaseFinger.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/Component/EasyTouchTrigger.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/EasyTouch.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/EasyTouchInput.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/ECamera.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/Finger.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/Gesture.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouch/Plugins/TwoFingerGesture.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/Button-Event-Input/ButtonInputUI.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/Button-Event-Input/ButtonUIEvent.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/ControlEventInput/ControlUIEvent.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/ControlEventInput/ControlUIInput.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/DPadClassicalTime/DPadParameterUI.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/FPSExample/FPSPlayerControl.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/FPSExample/ImpactEffect.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/JoystickParameter/AxisXUi.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/LoadLevelScript.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/TouchPad-Event-Input/TouchPadUIEvent.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Examples/_Medias/SliderText.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ComponentExtensions.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCArea.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCAxis.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCBase.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCButton.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCDPad.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCInput.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCJoystick.cs"
+"Assets/Packages/EasyTouchBundle/EasyTouchControls/Plugins/ETCTouchPad.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DAddCameraTargetAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DAdjustCameraTargetInfluenceAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DApplyInfluenceAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DApplyInfluencesTimedAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DCinematicsToggleAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DMoveCameraInstantlyToPositionAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DRemoveCameraTargetAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DShakeAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DShakeWithPresetAction.cs"
+"Assets/Packages/ProCamera2D/3rd Party Plugins Support/PlayMakerActions/ProCamera2DShakeWithValuesAction.cs"
+"Assets/Packages/ProCamera2D/Core/Common/BasePC2D.cs"
+"Assets/Packages/ProCamera2D/Core/Common/BaseTrigger.cs"
+"Assets/Packages/ProCamera2D/Core/Common/BoundariesAnimator.cs"
+"Assets/Packages/ProCamera2D/Core/Common/CameraTarget.cs"
+"Assets/Packages/ProCamera2D/Core/Common/EnumMovementAxis.cs"
+"Assets/Packages/ProCamera2D/Core/Common/EnumUpdateType.cs"
+"Assets/Packages/ProCamera2D/Core/Common/KDTree.cs"
+"Assets/Packages/ProCamera2D/Core/Common/MoveInColliderBoundaries.cs"
+"Assets/Packages/ProCamera2D/Core/Common/Utils/EditorPrefsX.cs"
+"Assets/Packages/ProCamera2D/Core/Common/Utils/PrefsData.cs"
+"Assets/Packages/ProCamera2D/Core/Common/Utils/Utils.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DCameraWindow.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DCinematics.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DForwardFocus.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DGeometryBoundaries.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DNumericBoundaries.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DParallax.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DPixelPerfect.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DPointerInfluence.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DPositionAndSizeOverrider.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DRails.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DShake.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DSpeedBasedZoom.cs"
+"Assets/Packages/ProCamera2D/Core/Extensions/ProCamera2DZoomToFitTargets.cs"
+"Assets/Packages/ProCamera2D/Core/Triggers/ProCamera2DTriggerBoundaries.cs"
+"Assets/Packages/ProCamera2D/Core/Triggers/ProCamera2DTriggerInfluence.cs"
+"Assets/Packages/ProCamera2D/Core/Triggers/ProCamera2DTriggerRails.cs"
+"Assets/Packages/ProCamera2D/Core/Triggers/ProCamera2DTriggerZoom.cs"
+"Assets/Packages/ProCamera2D/Examples/Platformer/Scripts/Player/PlayerController.cs"
+"Assets/Packages/ProCamera2D/Examples/Platformer/Scripts/Player/PlayerInput.cs"
+"Assets/Packages/ProCamera2D/Examples/Platformer/Scripts/Player/PlayerInputBot.cs"
+"Assets/Packages/ProCamera2D/Examples/Platformer/Scripts/ToggleCinematics.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Bullet.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Door.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/DoorKey.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemyAttack.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemyFSM.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemyPatrol.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemySight.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemyWander.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/PatrolWaypoint.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/GameOver.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Goal.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/ObjectMove.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/ObjectRotate.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Player/PlayerFire.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Player/PlayerHealth.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Player/PlayerInput.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Pool/Pool.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/Pool/PoolMember.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/RotateTowardsMouse.cs"
+"Assets/Packages/ProCamera2D/Examples/TopDownShooter/Scripts/SwitchCameraProjection.cs"
+"Assets/Packages/ProCamera2D/Extras/Letterbox/ProCamera2DLetterbox.cs"
+"Assets/Packages/ProCamera2D/Extras/Parallax/ProCamera2DParallaxObject.cs"
+"Assets/Packages/ProCamera2D/Extras/Pixel Perfect/ProCamera2DPixelPerfectSprite.cs"
+"Assets/Packages/ProCamera2D/ProCamera2D.cs"
+"Assets/Packages/Retro Bit FX/Scripts/SmoothCameraOrbit.cs"
+"Assets/Resources/Scripts/BajayScript.cs"
+"Assets/Resources/Scripts/BajayTrainingScript.cs"
+"Assets/Resources/Scripts/BambangCosmoScript.cs"
+"Assets/Resources/Scripts/BambangEnding.cs"
+"Assets/Resources/Scripts/BambangRageScript.cs"
+"Assets/Resources/Scripts/BambangScript.cs"
+"Assets/Resources/Scripts/BonangScript.cs"
+"Assets/Resources/Scripts/BouncerScript.cs"
+"Assets/Resources/Scripts/CakKumisScript.cs"
+"Assets/Resources/Scripts/ClickAreaPosition.cs"
+"Assets/Resources/Scripts/CloudScript.cs"
+"Assets/Resources/Scripts/CounterLadyScript.cs"
+"Assets/Resources/Scripts/DestroyAfterTime.cs"
+"Assets/Resources/Scripts/DirgahayuText.cs"
+"Assets/Resources/Scripts/EndingScript.cs"
+"Assets/Resources/Scripts/EndScript.cs"
+"Assets/Resources/Scripts/ExitScript.cs"
+"Assets/Resources/Scripts/FadeIO.cs"
+"Assets/Resources/Scripts/FadeOutThenDestroy.cs"
+"Assets/Resources/Scripts/FadeOutThenDestroy2.cs"
+"Assets/Resources/Scripts/FollowCamera.cs"
+"Assets/Resources/Scripts/GameManager.cs"
+"Assets/Resources/Scripts/GletserTrainingScript.cs"
+"Assets/Resources/Scripts/GUIScript.cs"
+"Assets/Resources/Scripts/KBHScript.cs"
+"Assets/Resources/Scripts/KitaroScript.cs"
+"Assets/Resources/Scripts/LogoSplash.cs"
+"Assets/Resources/Scripts/MainCameraScript.cs"
+"Assets/Resources/Scripts/MainMenu.cs"
+"Assets/Resources/Scripts/MoveButtonScript.cs"
+"Assets/Resources/Scripts/MovieStreaming.cs"
+"Assets/Resources/Scripts/MovingScript.cs"
+"Assets/Resources/Scripts/NKScript.cs"
+"Assets/Resources/Scripts/OnClickScript.cs"
+"Assets/Resources/Scripts/P1TrainingScript.cs"
+"Assets/Resources/Scripts/ParticleSpeed.cs"
+"Assets/Resources/Scripts/PatrickScript.cs"
+"Assets/Resources/Scripts/Player1Script.cs"
+"Assets/Resources/Scripts/PlayVideo.cs"
+"Assets/Resources/Scripts/RonChatScript.cs"
+"Assets/Resources/Scripts/RonRageScript.cs"
+"Assets/Resources/Scripts/RonScript.cs"
+"Assets/Resources/Scripts/SaveValues.cs"
+"Assets/Resources/Scripts/shadowFollows.cs"
+"Assets/Resources/Scripts/Spectator.cs"
+"Assets/Resources/Scripts/SpectatorSpawner.cs"
+"Assets/Resources/Scripts/StarBlinking.cs"
+"Assets/Resources/Scripts/SunWukongChatScript.cs"
+"Assets/Resources/Scripts/SunWukongScript.cs"
+"Assets/Resources/Scripts/TournamentScript.cs"
+"Assets/Resources/Scripts/TrainingScript.cs"
+-langversion:9.0
+
+/deterministic
+/optimize-
+/debug:portable
+/nologo
+/RuntimeMetadataVersion:v4.0.30319
+
+/nowarn:0169
+/nowarn:0649
+/nowarn:1701
+/nowarn:1702
+/utf8output
+/preferreduilang:en-US
+

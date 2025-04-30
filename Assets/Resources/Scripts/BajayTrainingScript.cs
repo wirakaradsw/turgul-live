@@ -67,15 +67,25 @@ public class BajayTrainingScript : MonoBehaviour {
 			} else {
 
 				if (transform.localScale.x == 0.8f) {
-					transform.position = new Vector3 (transform.position.x - speed, transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
 				}
 
 				if (transform.localScale.x == -0.8f) {
-					transform.position = new Vector3 (transform.position.x + speed, transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
 				}
 			}
 
 		}
 		
 	}
+
+    public void OnMouseDown()
+    {
+        if (!manager.fight)
+        {
+            manager.player1.transform.position = new Vector3(manager.player1.transform.position.x, manager.player1.transform.position.y, -2f);
+            transform.position = new Vector3(manager.player1.transform.position.x, transform.position.y, transform.position.z);
+        }
+    }
+
 }

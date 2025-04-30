@@ -64,16 +64,26 @@ public class MainMenu : MonoBehaviour {
 			turgulTitle0.SetActive (false);
 			blackLine.SetActive (false);
 
-		}
+            StartCoroutine("TurgulTitleFadeOut");
 
-		if (pukulanIcon.transform.position.x > 11f) {
+            startButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, -20);
+            if (PlayerPrefs.GetInt("chapter") > 0)
+            {
+                continueButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, -60);
+            }
+            if (PlayerPrefs.GetInt("quickMode") == 1)
+            {
+                quickButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, -100);
+            }
+            //tutorialButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, -140);
+            quitButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, -140);
 
-			/*if (gongSound.isPlaying ==false){
-				gongSound.Play ();
-			}*/
+        }
+
+		/*if (pukulanIcon.transform.position.x > 11f) {
+
 
 			StartCoroutine ("TurgulTitleFadeOut");
-			//turgulTitle2.transform.position = new Vector3(turgulTitle2.transform.position.x, turgulTitle2.transform.position.y + ((1f - turgulTitle2.transform.position.y) * 0.04f), turgulTitle2.transform.position.z);
 
 		}
 
@@ -93,7 +103,7 @@ public class MainMenu : MonoBehaviour {
 			tutorialButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (0, -140);
 			quitButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (0, -180);
 
-		}
+		}*/
 		
 	}
 	
@@ -113,7 +123,7 @@ public class MainMenu : MonoBehaviour {
 		for (float i = 1f; i >= 0f; i-= 0.1f) {
 			if (i < 0.1){
 				i = 0;
-				turgulTitle2.transform.position = new Vector3(turgulTitle2.transform.position.x, turgulTitle2.transform.position.y + ((1f - turgulTitle2.transform.position.y) * 0.04f), turgulTitle2.transform.position.z);
+				//turgulTitle2.transform.position = new Vector3(turgulTitle2.transform.position.x, turgulTitle2.transform.position.y + ((1f - turgulTitle2.transform.position.y) * 0.04f), turgulTitle2.transform.position.z);
 				turgulTitle1.SetActive (false);
 				bGBlack.SetActive (false);
 			}

@@ -12,18 +12,18 @@ public class BambangScript : MonoBehaviour {
 	KBHScript kbhScript;
 	SunWukongScript wukongScript;
 
-	int sAttackTimer = 100;
-	int sAttackTimerMax = 100;
-	//int tourScript.p1SAttack3Timer = 40;
-	//int tourScript.p1SAttack3TimerMax = 40;
+	float sAttackTimer = 100;
+    float sAttackTimerMax = 100;
+    //int tourScript.p1SAttack3Timer = 40;
+    //int tourScript.p1SAttack3TimerMax = 40;
 
-	int standUpTimer = 40;
-	int standUpTimerMax = 40;
-	int walkTimer = 40;
-	int walkTimerMax = 40;
-	
-	int endingTimer = 80;
-	int endingTimerMax = 80;
+    float standUpTimer = 40;
+    float standUpTimerMax = 40;
+    float walkTimer = 40;
+    float walkTimerMax = 40;
+
+    float endingTimer = 80;
+    float endingTimerMax = 80;
 	
 	float defPoint = 20f;
 	float attPoint = 8f;
@@ -36,9 +36,10 @@ public class BambangScript : MonoBehaviour {
 	bool sAttack2 = false;
 	bool sAttack3 = false;
 	bool sAttackStart = false;
-	//bool tourScript.p1SAttack3Start = false;
+    bool isSuperBlow = false;
+    //bool tourScript.p1SAttack3Start = false;
 
-	bool block = false;
+    bool block = false;
 	bool dodge = false;
 	bool moveBack = false;
 	bool standUpStart = false;
@@ -115,7 +116,7 @@ public class BambangScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimer {
+	public float SAttackTimer {
 		
 		get {
 			return sAttackTimer;
@@ -125,7 +126,7 @@ public class BambangScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimerMax {
+	public float SAttackTimerMax {
 		
 		get {
 			return sAttackTimerMax;
@@ -135,17 +136,18 @@ public class BambangScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttack3Timer {
+	public float SAttack3Timer {
 		
 		get {
 			return tourScript.p1SAttack3Timer;
 		}
 		set {
 			tourScript.p1SAttack3Timer = value;
-		}
+            isSuperBlow = false;
+        }
 	}
 	
-	public int SAttack3TimerMax {
+	public float SAttack3TimerMax {
 		
 		get {
 			return tourScript.p1SAttack3TimerMax;
@@ -191,10 +193,10 @@ public class BambangScript : MonoBehaviour {
 		
 			if (sAttackStart) {
 				tourScript.superScene.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-				sAttackTimer --;
-			}
+                sAttackTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (sAttackTimer == 0) {
+			if (sAttackTimer <= 0) {
 				sAttackStart = false;
 				if (sAttack1) {
 					tourScript.p1Anim.SetInteger ("FightMove", 10);
@@ -217,11 +219,12 @@ public class BambangScript : MonoBehaviour {
 			}
 		
 			if (tourScript.p1SAttack3Start) {
-				tourScript.p1SAttack3Timer--;
-			}
+				tourScript.p1SAttack3Timer -= Time.deltaTime * 80f;
+            }
 		
-			if (tourScript.p1SAttack3Timer == 5) {
-				Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (transform.position.x + 3f, -0.2f, transform.position.z), Quaternion.identity);
+			if (tourScript.p1SAttack3Timer <= 5 && !isSuperBlow) {
+                isSuperBlow = true;
+                Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (transform.position.x + 3f, -0.2f, transform.position.z), Quaternion.identity);
 				tourScript.swipSound.Play ();
 			}
 		
@@ -296,7 +299,7 @@ public class BambangScript : MonoBehaviour {
 
 			if (tourScript.P2Id == 3) {
 
-				if (tourScript.p2SAttack3Timer == 0) {
+				if (tourScript.p2SAttack3Timer <= 0) {
 					tourScript.p2SAttack3Start = false;
 					if (!block && !dodge) {
 						tourScript.p1Anim.SetInteger ("FightMove", 13); // --- P1 got hit
@@ -315,7 +318,7 @@ public class BambangScript : MonoBehaviour {
 					tourScript.p2SAttack3Timer = tourScript.p2SAttack3TimerMax;
 				}
 
-				if (tourScript.p2Anim.GetInteger ("FightMove") == 12 && tourScript.p2SAttack3Timer == 39) {
+				if (tourScript.p2Anim.GetInteger ("FightMove") == 12 && tourScript.p2SAttack3Timer <= 39f && tourScript.p2SAttack3Timer > 38f) {
 					if (block) {
 						tourScript.p1Anim.SetInteger ("FightMove", 5); // --- P1 blocks
 						tourScript.hitSound.Play ();
@@ -376,7 +379,7 @@ public class BambangScript : MonoBehaviour {
 					StartCoroutine ("HitTextFadeOut");
 				}
 
-			} else if (tourScript.p2SAttack3Timer == 0) {
+			} else if (tourScript.p2SAttack3Timer <= 0) {
 				tourScript.p2SAttack3Start = false;
 				if (block) {
 					tourScript.p1Anim.SetInteger ("FightMove", 5); // --- P1 blocks
@@ -502,10 +505,10 @@ public class BambangScript : MonoBehaviour {
 			}
 		
 			if (standUpStart) {
-				standUpTimer--;
+                standUpTimer -= Time.deltaTime * 80f;
 			}
 
-			if (standUpTimer == 0) {
+			if (standUpTimer <= 0) {
 				standUpStart = false;
 				tourScript.p1Anim.SetInteger ("FightMove", 15); //--- Stand up
 				/*if (bonangScript.SAttack3){
@@ -532,10 +535,10 @@ public class BambangScript : MonoBehaviour {
 			}
 		
 			if (walkStart) {
-				walkTimer--;
-			}
+				walkTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (walkTimer == 0) {
+			if (walkTimer <= 0) {
 				walkStart = false;
 				tourScript.p1Anim.SetInteger ("FightMove", 16);
 				walkTimer = walkTimerMax;
@@ -573,10 +576,10 @@ public class BambangScript : MonoBehaviour {
 			}
 		
 			if (ending) {
-				endingTimer--;
-			}
+                endingTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (endingTimer == 0) {
+			if (endingTimer <= 0) {
 				ending = false;
 				tourScript.p1Anim.SetInteger ("FightMove", 1);
 			

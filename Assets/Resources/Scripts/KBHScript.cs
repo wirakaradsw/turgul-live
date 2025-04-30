@@ -8,20 +8,20 @@ public class KBHScript : MonoBehaviour {
 	BambangRageScript bambangRageScript;
 	BambangCosmoScript bambangCosmoScript;
 	
-	int p2SAttInitiationTimer = 40;
-	int p2SAttInitiationTimerMax = 40;
+	float p2SAttInitiationTimer = 40;
+    float p2SAttInitiationTimerMax = 40;
 	int p2SAttAction = 0;
-	int sAttackTimer = 100;
-	int sAttackTimerMax = 100;
+    float sAttackTimer = 100;
+    float sAttackTimerMax = 100;
 	
 	int p2DefAction = 0;
-	int standUpTimer = 40;
-	int standUpTimerMax = 40;
-	int walkTimer = 40;
-	int walkTimerMax = 40;
-	
-	int endingTimer = 80;
-	int endingTimerMax = 80;
+    float standUpTimer = 40;
+    float standUpTimerMax = 40;
+    float walkTimer = 40;
+    float walkTimerMax = 40;
+
+    float endingTimer = 80;
+    float endingTimerMax = 80;
 	
 	float defPoint = 20f;
 	float attPoint = 8f;
@@ -40,13 +40,13 @@ public class KBHScript : MonoBehaviour {
 	bool walkStart = false;
 	
 	bool ending = false;
-	
-	int p1SAttackTimer = 100;
-	int p1SAttackTimerMax = 100;
+
+    float p1SAttackTimer = 100;
+    float p1SAttackTimerMax = 100;
 
 	bool henshin = false;
-	int henshinTimer = 100;
-	int henshinTimerMax = 100;
+    float henshinTimer = 100;
+    float henshinTimerMax = 100;
 	
 	float p1SAtt1Damage = 0f;
 	float p1SAtt2Damage = 0f;
@@ -123,7 +123,7 @@ public class KBHScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimer {
+	public float SAttackTimer {
 		
 		get {
 			return sAttackTimer;
@@ -133,7 +133,7 @@ public class KBHScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimerMax {
+	public float SAttackTimerMax {
 		
 		get {
 			return sAttackTimerMax;
@@ -143,7 +143,7 @@ public class KBHScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttack3Timer {
+	public float SAttack3Timer {
 		
 		get {
 			return tourScript.p2SAttack3Timer;
@@ -153,7 +153,7 @@ public class KBHScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttack3TimerMax {
+	public float SAttack3TimerMax {
 		
 		get {
 			return tourScript.p2SAttack3TimerMax;
@@ -182,9 +182,9 @@ public class KBHScript : MonoBehaviour {
 		if (Time.timeScale != 0) {
 
 			if (henshin) {
-				henshinTimer --;
+                henshinTimer -= Time.deltaTime * 80f;
 			}
-			if (henshinTimer == 40) {
+			if (henshinTimer <= 40f && henshinTimer > 39f) {
 				tourScript.swipSound.Play ();
 				Instantiate (Resources.Load ("Prefabs/EnergyBurst2"), new Vector3 (transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
 
@@ -193,13 +193,13 @@ public class KBHScript : MonoBehaviour {
 			}
 		
 			// --- P2 initiates Super Attacks ---
-			if (tourScript.p2Att3aActive.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && tourScript.fighting) { 
-			
-				p2SAttInitiationTimer--;
-			
-			}
+			if (tourScript.p2Att3aActive.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && tourScript.fighting) {
+
+                p2SAttInitiationTimer -= Time.deltaTime * 80f;
+
+            }
 		
-			if (p2SAttInitiationTimer == 0) {
+			if (p2SAttInitiationTimer <= 0) {
 				p2SAttAction = Random.Range (1, 11);
 				p2SAttInitiationTimer = p2SAttInitiationTimerMax;
 			}
@@ -272,10 +272,10 @@ public class KBHScript : MonoBehaviour {
 		
 			if (sAttackStart) {
 				tourScript.superScene.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-				sAttackTimer --;
-			}
+                sAttackTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (sAttackTimer == 5) {
+			if (sAttackTimer <= 5f && sAttackTimer > 4f) {
 				tourScript.p1Anim.SetInteger ("FightMove", 2);
 				tourScript.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				tourScript.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -283,7 +283,7 @@ public class KBHScript : MonoBehaviour {
 				tourScript.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 			}
 		
-			if (sAttackTimer == 0) {
+			if (sAttackTimer <= 0) {
 				sAttackStart = false;
 				if (tourScript.p2SAttack4) {
 					tourScript.p2Anim.SetInteger ("FightMove", 18);
@@ -314,7 +314,7 @@ public class KBHScript : MonoBehaviour {
 //		}
 		
 			// --- P2 Deffend Actions ---
-			if (p1SAttackTimer == p1SAttackTimerMax * 0.5f) { 
+			if (p1SAttackTimer < p1SAttackTimerMax * 0.5f && p1SAttackTimer > ((p1SAttackTimerMax * 0.5f)-1f) ) { 
 				if (tourScript.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == -72f && tourScript.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 50f) {
 					p2DefAction = Random.Range (1, 5);
 					if (p2DefAction == 1 || p2DefAction == 3 || (tourScript.p2HBar.GetComponent<RectTransform> ().rect.width <= 80)) {
@@ -345,7 +345,7 @@ public class KBHScript : MonoBehaviour {
 				}
 			}
 		
-			if (p1SAttackTimer == 5) {
+			if (p1SAttackTimer <= 5f && p1SAttackTimer > 4f) {
 				tourScript.p2Anim.SetInteger ("FightMove", 2);
 				tourScript.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p2Def1Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				tourScript.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p2Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -462,7 +462,7 @@ public class KBHScript : MonoBehaviour {
 				StartCoroutine ("HitTextFadeOut");
 			}
 		
-			if (tourScript.p1SAttack3Timer == 0) {
+			if (tourScript.p1SAttack3Timer <= 0) {
 				tourScript.p1SAttack3Start = false;
 				if (block) {
 					tourScript.p2Anim.SetInteger ("FightMove", 5); // --- P2 blocks
@@ -549,10 +549,10 @@ public class KBHScript : MonoBehaviour {
 			}
 		
 			if (standUpStart) {
-				standUpTimer--;
-			}
+                standUpTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (standUpTimer == 0) {
+			if (standUpTimer <= 0) {
 				standUpStart = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 15); //--- Stand up
 				if (tourScript.p1SAttack3) {
@@ -569,10 +569,10 @@ public class KBHScript : MonoBehaviour {
 			}
 		
 			if (walkStart) {
-				walkTimer--;
-			}
+                walkTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (walkTimer == 0) {
+			if (walkTimer <= 0) {
 				walkStart = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 16);
 				walkTimer = walkTimerMax;
@@ -608,10 +608,10 @@ public class KBHScript : MonoBehaviour {
 			}
 		
 			if (ending) {
-				endingTimer--;
-			}
+                endingTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (endingTimer == 0) {
+			if (endingTimer <= 0) {
 				ending = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 1);
 			

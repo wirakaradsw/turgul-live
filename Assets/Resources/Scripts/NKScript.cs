@@ -9,24 +9,24 @@ public class NKScript : MonoBehaviour {
 	BambangRageScript bambangRageScript;
 	BambangCosmoScript bambangCosmoScript;
 	
-	int p2SAttInitiationTimer = 40;
-	int p2SAttInitiationTimerMax = 40;
+	float p2SAttInitiationTimer = 40;
+    float p2SAttInitiationTimerMax = 40;
 	int p2SAttAction = 0;
-	int sAttackTimer = 100;
-	int sAttackTimerMax = 100;
+    float sAttackTimer = 100;
+    float sAttackTimerMax = 100;
 	//int tourScript.p2SAttack3Timer = 40;
 	//int tourScript.p2SAttack3TimerMax = 40;
 	
 	int p2DefAction = 0;
-	int standUpTimer = 40;
-	int standUpTimerMax = 40;
-	int walkTimer = 40;
-	int walkTimerMax = 40;
-	int flyOutTimer = 40;
-	int flyOutTimerMax = 40;
-	
-	int endingTimer = 80;
-	int endingTimerMax = 80;
+    float standUpTimer = 40;
+    float standUpTimerMax = 40;
+    float walkTimer = 40;
+    float walkTimerMax = 40;
+    float flyOutTimer = 40;
+    float flyOutTimerMax = 40;
+
+    float endingTimer = 80;
+    float endingTimerMax = 80;
 	
 	float defPoint = 20f;
 	float attPoint = 8f;
@@ -50,9 +50,9 @@ public class NKScript : MonoBehaviour {
 	bool ending = false;
 	bool flyOutStart = false;
 	[HideInInspector] public bool flyOut = false;
-	
-	int p1SAttackTimer = 100;
-	int p1SAttackTimerMax = 100;
+
+    float p1SAttackTimer = 100;
+    float p1SAttackTimerMax = 100;
 	//int tourScript.p1SAttack3Timer = 40;
 	//int tourScript.p1SAttack3TimerMax = 40;
 	float p1SAtt1Damage = 0f;
@@ -122,7 +122,7 @@ public class NKScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimer {
+	public float SAttackTimer {
 		
 		get {
 			return sAttackTimer;
@@ -132,7 +132,7 @@ public class NKScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttackTimerMax {
+	public float SAttackTimerMax {
 		
 		get {
 			return sAttackTimerMax;
@@ -142,7 +142,7 @@ public class NKScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttack3Timer {
+	public float SAttack3Timer {
 		
 		get {
 			return tourScript.p2SAttack3Timer;
@@ -152,7 +152,7 @@ public class NKScript : MonoBehaviour {
 		}
 	}
 	
-	public int SAttack3TimerMax {
+	public float SAttack3TimerMax {
 		
 		get {
 			return tourScript.p2SAttack3TimerMax;
@@ -178,13 +178,13 @@ public class NKScript : MonoBehaviour {
 		if (Time.timeScale != 0) {
 		
 			// --- P2 initiates Super Attacks ---
-			if (tourScript.p2Att1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && tourScript.fighting) { 
-			
-				p2SAttInitiationTimer--;
+			if (tourScript.p2Att1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f && tourScript.fighting) {
+
+                p2SAttInitiationTimer -= Time.deltaTime * 80f;
 			
 			}
 		
-			if (p2SAttInitiationTimer == 0) {
+			if (p2SAttInitiationTimer <= 0) {
 				p2SAttAction = Random.Range (1, 11);
 				p2SAttInitiationTimer = p2SAttInitiationTimerMax;
 			}
@@ -241,7 +241,8 @@ public class NKScript : MonoBehaviour {
 				if (tourScript.p2Att3Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 32f) {
 					tourScript.fightSound.Play ();
 					Instantiate (Resources.Load ("Prefabs/SmokePuff"), new Vector3 (transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-					Instantiate (Resources.Load ("Prefabs/Fog"), new Vector3 (0, 0, 0), Quaternion.identity);
+					GameObject fog = Instantiate (Resources.Load ("Prefabs/Fog"), new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;
+                    fog.transform.localScale = new Vector3(1.2f, 1.2f, 1f);
 					tourScript.swipSound.Play ();
 					tourScript.fighting = false;
 					tourScript.p2SAttack3 = true;
@@ -283,10 +284,10 @@ public class NKScript : MonoBehaviour {
 		
 			if (sAttackStart) {
 				tourScript.superScene.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-				sAttackTimer --;
-			}
+                sAttackTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (sAttackTimer == 5) {
+			if (sAttackTimer <= 5f && sAttackTimer > 4f) {
 				tourScript.p1Anim.SetInteger ("FightMove", 2);
 				tourScript.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.def1Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				tourScript.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.def2Button.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -294,7 +295,7 @@ public class NKScript : MonoBehaviour {
 				tourScript.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p1Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 			}
 		
-			if (sAttackTimer == 0) {
+			if (sAttackTimer <= 0) {
 				sAttackStart = false;
 				if (tourScript.p2SAttack1) {
 					tourScript.p2Anim.SetInteger ("FightMove", 10);
@@ -317,16 +318,16 @@ public class NKScript : MonoBehaviour {
 			}
 		
 			if (tourScript.p2SAttack3Start) {
-				tourScript.p2SAttack3Timer--;
-			}
+				tourScript.p2SAttack3Timer -= Time.deltaTime * 80f;
+            }
 
-			if (tourScript.p2SAttack3Timer == 0) {
+			if (tourScript.p2SAttack3Timer <= 0) {
 				Instantiate (Resources.Load ("Prefabs/SuperBlow2"), new Vector3 (transform.position.x - 3f, -0.2f, transform.position.z), Quaternion.identity);
 				tourScript.swipSound.Play ();
 			}
 		
 			// --- P2 Deffend Actions ---
-			if (p1SAttackTimer == p1SAttackTimerMax * 0.5f) { 
+			if (p1SAttackTimer < p1SAttackTimerMax * 0.5f && p1SAttackTimer > ((p1SAttackTimerMax * 0.5f)-1f) ) { 
 				if (tourScript.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == -72f && tourScript.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition.y == 50f) {
 					p2DefAction = Random.Range (1, 5);
 					if (p2DefAction == 1 || p2DefAction == 3 || (tourScript.p2HBar.GetComponent<RectTransform> ().rect.width <= 80)) {
@@ -357,7 +358,7 @@ public class NKScript : MonoBehaviour {
 				}
 			}
 		
-			if (p1SAttackTimer == 5) {
+			if (p1SAttackTimer <= 5f && p1SAttackTimer > 4f) {
 				tourScript.p2Anim.SetInteger ("FightMove", 2);
 				tourScript.p2Def1Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p2Def1Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
 				tourScript.p2Def2Active.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (tourScript.p2Def2Inactive.GetComponentInChildren<RectTransform> ().anchoredPosition.x, 50f);
@@ -465,7 +466,7 @@ public class NKScript : MonoBehaviour {
 				StartCoroutine ("HitTextFadeOut");
 			}
 		
-			if (tourScript.p1SAttack3Timer == 0) {
+			if (tourScript.p1SAttack3Timer <= 0) {
 				tourScript.p1SAttack3Start = false;
 				if (block) {
 					tourScript.p2Anim.SetInteger ("FightMove", 5); // --- P2 blocks
@@ -548,10 +549,10 @@ public class NKScript : MonoBehaviour {
 			}
 		
 			if (standUpStart) {
-				standUpTimer--;
+                standUpTimer -= Time.deltaTime * 80f;
 			}
 		
-			if (standUpTimer == 0) {
+			if (standUpTimer <= 0) {
 				standUpStart = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 15); //--- Stand up
 				if (tourScript.p1SAttack3) {
@@ -568,10 +569,10 @@ public class NKScript : MonoBehaviour {
 			}
 		
 			if (walkStart) {
-				walkTimer--;
-			}
+                walkTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (walkTimer == 0) {
+			if (walkTimer <= 0) {
 				walkStart = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 16);
 				walkTimer = walkTimerMax;
@@ -610,10 +611,10 @@ public class NKScript : MonoBehaviour {
 			}
 		
 			if (ending) {
-				endingTimer--;
-			}
+                endingTimer -= Time.deltaTime * 80f;
+            }
 		
-			if (endingTimer == 0) {
+			if (endingTimer <= 0) {
 				ending = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 18);
 				flyOutStart = true;
@@ -621,10 +622,10 @@ public class NKScript : MonoBehaviour {
 			}
 
 			if (flyOutStart) {
-				flyOutTimer --;
-			}
+                flyOutTimer -= Time.deltaTime * 80f;
+            }
 
-			if (flyOutTimer == 0) {
+			if (flyOutTimer <= 0) {
 				tourScript.p2Anim.SetInteger ("FightMove", 19);
 				tourScript.jumpSound.Play ();
 				flyOutStart = false;

@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour {
 	Player1Script p1Script;
 	PatrickScript patrickScript;
 
+    public Camera mainCam;
+    public GameObject MoveLeftButton;
+    public GameObject blocker;
+    public GameObject hitFxPool;
+    public GameObject[] hitFx;
+    public GameObject[] cloudButton;
+
 	public GameObject player1;
 	public GameObject patrick;
 	GameObject dakochan;
@@ -120,32 +127,32 @@ public class GameManager : MonoBehaviour {
 	public AudioSource oioiVoice;
 
 
-	int readyToFightTimer = 80;
-	int readyToFightTimerMax = 80;
-	int fightStartTimer = 40;
-	int fightStartTimerMax = 40;
-	int p2ActionTimer = 40;
-	int p2ActionTimerInit = 40;
-	int addDefBarTimer = 100;
-	int addDefBarTimerInit = 100;
-	int chap2ProlEndTimer = 80;
-	int chap2ProlEndTimerMax = 80;
-	int p1RanAttack = 0;
-	int p2RanAttack = 0;
+	float readyToFightTimer = 80;
+	float readyToFightTimerMax = 80;
+	float fightStartTimer = 40;
+    float fightStartTimerMax = 40;
+    float p2ActionTimer = 40;
+    float p2ActionTimerInit = 40;
+    float addDefBarTimer = 100;
+    float addDefBarTimerInit = 100;
+    float chap2ProlEndTimer = 80;
+    float chap2ProlEndTimerMax = 80;
+    int p1RanAttack = 0;
+    int p2RanAttack = 0;
 
-	int strollingTimer = 200;
-	int strollingTimerMax = 200;
+    float strollingTimer = 200;
+    float strollingTimerMax = 200;
 
 	int attackVoice1 = 0;
 	int attackVoice2 = 0;
 
 	int chatInfo = 0;
-	int henshinTimer = 100;
-	int henshinTimerMax = 100;
-	int chapTextTime = 200;
-	int chapTextTimeMax = 200;
-	int chap4AttackTimer = 200;
-	int chap4AttackTimerMax = 200;
+    float henshinTimer = 100;
+    float henshinTimerMax = 100;
+    float chapTextTime = 200;
+    float chapTextTimeMax = 200;
+    float chap4AttackTimer = 200;
+    float chap4AttackTimerMax = 200;
 
 	public int chapter;
 	public int moneyPoint;
@@ -295,10 +302,11 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
-		print ("Chapter " + PlayerPrefs.GetInt ("chapter"));
-		print (PlayerPrefs.GetInt ("tournamentNumb"));
-		print ("Chap" + chap2ProlClose + " " + chap2ProlEndTimer);
-		print ("Stroll" + strollingStart + " " + strollingTimer);
+		//print ("Chapter " + PlayerPrefs.GetInt ("chapter"));
+        //print("Chapter Time: " + chapTextTime);
+		//print (PlayerPrefs.GetInt ("tournamentNumb"));
+		//print ("Chap" + chap2ProlClose + " " + chap2ProlEndTimer);
+		//print ("Stroll" + strollingStart + " " + strollingTimer);
 
 		PlayerPrefs.SetInt ("chapter", chapter);
 		PlayerPrefs.SetInt ("moneyPoint", moneyPoint);
@@ -357,7 +365,7 @@ public class GameManager : MonoBehaviour {
 		if (Time.timeScale != 0) {
 
 			if (chapter == 1) {
-				chapTextTime --;
+                chapTextTime -= Time.deltaTime * 100f;
 				if (chapTextTime > 0 && player1.transform.position.x < 17f){
 					chapText.text = "Chapter 1:\n" +
 						"Rookie Tournament\n~ Let's have a Turgul!";
@@ -368,9 +376,9 @@ public class GameManager : MonoBehaviour {
 			}
 			if (chapter == 2) {
 				if (prologue) {
-					chapTextTime --;
+					chapTextTime -= Time.deltaTime * 100f;
 					if (chapTextTime > 0){
-						chapText.text = "Chapter 2:\n" +
+                        chapText.text = "Chapter 2:\n" +
 							"Amateur Tournament\n~ The devil within ~";
 					}else {
 						chapTextTime = 0;
@@ -394,14 +402,18 @@ public class GameManager : MonoBehaviour {
 					counterLady.SetActive (true);
 					bouncer.SetActive (true);
 					bajay.SetActive (true);
-				}
+                    //p1Script.joystick.SetActive(false);
+                }
 
 				if (player1.transform.position.x < -2f && player1.transform.position.x > -4f && prologue) {
-					if (!hihiSound.isPlaying) {
+                    if (!hihiSound.isPlaying) {
 						hihiSound.Play ();
 					}
 					chat = true;
-					player1.transform.localScale = new Vector3 (-1, 1, 1);
+                    //MoveLeftButton.SetActive(false);
+                    p1Script.joystick.SetActive(false);
+                    p1Script.OnMoveLeft(false);
+                    player1.transform.localScale = new Vector3 (-1, 1, 1);
 					anim.SetBool ("Walk", true);
 					player1.transform.position = new Vector3 (player1.transform.position.x + ((-4f - player1.transform.position.x) * 0.1f), player1.transform.position.y, player1.transform.position.z + ((0 - player1.transform.position.z) * 0.1f));
 					dakochan.transform.position = new Vector3 (4, 0, 0);
@@ -445,9 +457,9 @@ public class GameManager : MonoBehaviour {
 //				Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (player1.transform.position.x, player1.transform.position.y - 1, player1.transform.position.z), Quaternion.identity);
 				}
 				if (chap2ProlClose) {
-					chap2ProlEndTimer --;
+					chap2ProlEndTimer -= Time.deltaTime * 100f;
 				}
-				if (chap2ProlEndTimer == 0) {
+				if (chap2ProlEndTimer <= 0) {
 					chap2ProlClose = false;
 					strollingStart = true;
 					screenSrink = false;
@@ -462,9 +474,9 @@ public class GameManager : MonoBehaviour {
 
 			if (chapter == 3) {
 				if (prologue) {
-					chapTextTime --;
-					if (chapTextTime > 0){
-						chapText.text = "Chapter 3:\n" +
+					chapTextTime -= Time.deltaTime * 100f;
+                    if (chapTextTime > 0){
+                        chapText.text = "Chapter 3:\n" +
 							"Pro Tournament\n~ Super Heroes ~";
 					}else {
 						chapTextTime = 0;
@@ -496,7 +508,10 @@ public class GameManager : MonoBehaviour {
 				if (player1.transform.position.x < -2f && player1.transform.position.x > -4f && prologue && !dynamicCam) {
 
 					chat = true;
-					player1.transform.localScale = new Vector3 (-1, 1, 1);
+                    //MoveLeftButton.SetActive(false);
+                    p1Script.joystick.SetActive(false);
+                    p1Script.OnMoveLeft(false);
+                    player1.transform.localScale = new Vector3 (-1, 1, 1);
 					anim.SetBool ("Walk", true);
 					player1.transform.position = new Vector3 (player1.transform.position.x + ((-4f - player1.transform.position.x) * 0.1f), player1.transform.position.y, player1.transform.position.z + ((0 - player1.transform.position.z) * 0.1f));
 					camera1.transform.position = new Vector3 (camera1.transform.position.x + ((-12f - camera1.transform.position.x) * 0.4f), camera1.transform.position.y, camera1.transform.position.z);
@@ -535,14 +550,15 @@ public class GameManager : MonoBehaviour {
 
 				}
 				if (chatInfo == 2 && dynamicCam) {
-					henshinTimer --;
+					henshinTimer -= Time.deltaTime * 100f;
 				}
-				if (henshinTimer == 15) {
+				if (henshinTimer < 15f && henshinTimer > 14f) {
 					swipSound.Play ();
 					Instantiate (Resources.Load ("Prefabs/EnergyBurst2"), new Vector3 (kitaro.transform.position.x, kitaro.transform.position.y - 1, kitaro.transform.position.z), Quaternion.identity);
 				}
-				if (henshinTimer == 0) {
-					panelText.text = "KBH:\n\n" +
+				if (henshinTimer <= 0) {
+                    henshinTimer = 0;
+                    panelText.text = "KBH:\n\n" +
 						"I am KNIGHT BLACK HERO!!!";
 					nextButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
 				}
@@ -572,9 +588,9 @@ public class GameManager : MonoBehaviour {
 
 			if (chapter == 4) {
 				if (prologue) {
-					chapTextTime --;
-					if (chapTextTime > 0){
-						chapText.text = "Last Chapter:\n" +
+					chapTextTime -= Time.deltaTime * 100f;
+                    if (chapTextTime > 0){
+                        chapText.text = "Last Chapter:\n" +
 							"Grand Tournament\n~ The power within ~";
 					}else {
 						chapTextTime = 0;
@@ -596,12 +612,19 @@ public class GameManager : MonoBehaviour {
 					counterLady.SetActive (true);
 					bouncer.SetActive (true);
 					bajay.SetActive (true);
-				}
+                    if (!fight)
+                        cloudButton[6].SetActive(true);
+                    else
+                        cloudButton[6].SetActive(false);
+                }
 			
 				if (player1.transform.position.x < -2f && player1.transform.position.x > -4f && prologue && p1HBar.GetComponent<RectTransform> ().rect.width == 300) {
 				
 					chat = true;
-					player1.transform.localScale = new Vector3 (-1, 1, 1);
+                    //MoveLeftButton.SetActive(false);
+                    p1Script.joystick.SetActive(false);
+                    p1Script.OnMoveLeft(false);
+                    player1.transform.localScale = new Vector3 (-1, 1, 1);
 					anim.SetBool ("Walk", true);
 					player1.transform.position = new Vector3 (player1.transform.position.x + ((-4f - player1.transform.position.x) * 0.1f), player1.transform.position.y, player1.transform.position.z + ((0 - player1.transform.position.z) * 0.1f));
 					camera1.transform.position = new Vector3 (camera1.transform.position.x + ((0f - camera1.transform.position.x) * 0.4f), camera1.transform.position.y, camera1.transform.position.z);
@@ -661,17 +684,17 @@ public class GameManager : MonoBehaviour {
 						"\nYou go first!";
 				}
 				if (chap4Fighting) {
-					chap4AttackTimer --;
-				}
-				if (chap4AttackTimer == 100 && chap4P1Attack) {
+					chap4AttackTimer -= Time.deltaTime * 100f;
+                }
+				if (chap4AttackTimer < 100f && chap4AttackTimer > 99f && chap4P1Attack) {
 					anim.SetInteger ("FightMove", 12);
 					sapuJagatVoice.Play ();
 				}
-				if (chap4AttackTimer == 65 && chap4P1Attack) {
+				if (chap4AttackTimer <= 65f && chap4AttackTimer > 64f && chap4P1Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (player1.transform.position.x + 3f, -0.2f, player1.transform.position.z), Quaternion.identity);
 					swipSound.Play ();
 				}
-				if (chap4AttackTimer == 50 && chap4P1Attack) {
+				if (chap4AttackTimer <= 50f && chap4AttackTimer >49f && chap4P1Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (sunWukong.transform.position.x, -0.2f, sunWukong.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit2"), new Vector3 (sunWukong.transform.position.x, sunWukong.transform.position.y, sunWukong.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (sunWukong.transform.position.x, sunWukong.transform.position.y, sunWukong.transform.position.z), Quaternion.identity);
@@ -681,22 +704,22 @@ public class GameManager : MonoBehaviour {
 					p2HBar.rectTransform.sizeDelta = new Vector2 (270, p2HBar.GetComponent<RectTransform> ().rect.height);
 					cakKumis.transform.localScale = new Vector3 (1, 1, 1);
 				}
-				if (chap4AttackTimer == 0 && chap4P1Attack) {
+				if (chap4AttackTimer <= 0 && chap4P1Attack) {
 					anim.SetInteger ("FightMove", 2);
 					sunWukongAnim.SetInteger ("FightMove", 2);
 					chap4P1Attack = false;
 					chap4P2Attack = true;
 					chap4AttackTimer = chap4AttackTimerMax;
 				}
-				if (chap4AttackTimer == 100 && chap4P2Attack) {
+				if (chap4AttackTimer <= 100f && chap4AttackTimer > 99f && chap4P2Attack) {
 					sunWukongAnim.SetInteger ("FightMove", 12);
 					hawaVoice.Play ();
 				}
-				if (chap4AttackTimer == 65 && chap4P2Attack) {
+				if (chap4AttackTimer <= 65f && chap4AttackTimer > 64f && chap4P2Attack) {
 					Instantiate (Resources.Load ("Prefabs/ElectroBall2"), new Vector3 (sunWukong.transform.position.x - 3f, -0.2f, sunWukong.transform.position.z), Quaternion.identity);
 					swipSound.Play ();
 				}
-				if (chap4AttackTimer == 50 && chap4P2Attack) {
+				if (chap4AttackTimer <= 50f && chap4AttackTimer > 49f && chap4P2Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (player1.transform.position.x, 0.2f, player1.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit2"), new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
@@ -706,7 +729,7 @@ public class GameManager : MonoBehaviour {
 					p1HBar.rectTransform.sizeDelta = new Vector2 (0, p2HBar.GetComponent<RectTransform> ().rect.height);
 					cakKumis.transform.localScale = new Vector3 (-1, 1, 1);
 				}
-				if (chap4AttackTimer == 0 && chap4P2Attack) {
+				if (chap4AttackTimer <= 0 && chap4P2Attack) {
 					anim.SetInteger ("FightMove", 14);
 					sunWukongAnim.SetInteger ("FightMove", 1);
 					chap4P1Attack = false;
@@ -950,7 +973,7 @@ public class GameManager : MonoBehaviour {
 
 			// --- Fight Opening ---
 			if (bow) {
-				readyToFightTimer--;
+				readyToFightTimer -= Time.deltaTime * 100f;
 
 				//p1HBar.rectTransform.sizeDelta = new Vector2 (300, p1HBar.GetComponent<RectTransform> ().rect.height);
 				p2HBar.rectTransform.sizeDelta = new Vector2 (300, p2HBar.GetComponent<RectTransform> ().rect.height);
@@ -960,21 +983,22 @@ public class GameManager : MonoBehaviour {
 				p2DefBar.rectTransform.sizeDelta = new Vector2 (0, p2DefBar.GetComponent<RectTransform> ().rect.height);
 			}
 
-			if (readyToFightTimer == 0) {
+			if (readyToFightTimer <= 0) {
 				bow = false;
 				readyToFightTimer = readyToFightTimerMax;
 				anim.SetInteger ("FightMove", 2);
 				patrickAnim.SetInteger ("PatrickFightMove", 2);
 				fightStart = true;
+                hitFxPool.SetActive(true);
 			}
 
 			if (fightStart) {
-				fightStartTimer --;
+				fightStartTimer -= Time.deltaTime * 100f;
 
 				FightScene ();
 			}
 
-			if (fightStartTimer == 0) {
+			if (fightStartTimer <= 0) {
 				fightStart = false;
 				fightStartTimer = fightStartTimerMax;
 				p1MoveFwd = true;
@@ -1004,7 +1028,7 @@ public class GameManager : MonoBehaviour {
 				fighting = true;
 			}
 
-			if (p2ActionTimer == (p2ActionTimerInit - 10) && fighting) {
+			if (p2ActionTimer <= (p2ActionTimerInit - 10f) && p2ActionTimer > (p2ActionTimerInit - 11f) && fighting) {
 				anim.SetInteger ("FightMove", 2);
 				patrickAnim.SetInteger ("PatrickFightMove", 2);
 				player1.transform.position = new Vector3 (player1.transform.position.x + ((-2f - player1.transform.position.x) * 0.5f), player1.transform.position.y, player1.transform.position.z);
@@ -1013,16 +1037,16 @@ public class GameManager : MonoBehaviour {
 
 			if (fighting) {
 
-				p2ActionTimer --;
-				addDefBarTimer --;
+				p2ActionTimer -= Time.deltaTime * 100f;
+				addDefBarTimer -= Time.deltaTime * 100f;
 
-				if (addDefBarTimer == 0) {
+				if (addDefBarTimer <= 0) {
 					p1DefBar.rectTransform.sizeDelta = new Vector2 (p1DefBar.GetComponent<RectTransform> ().rect.width + defPoint, p1DefBar.GetComponent<RectTransform> ().rect.height);
 					p2DefBar.rectTransform.sizeDelta = new Vector2 (p2DefBar.GetComponent<RectTransform> ().rect.width + defPoint, p2DefBar.GetComponent<RectTransform> ().rect.height);
 					addDefBarTimer = addDefBarTimerInit;
 				}
 
-				if (p2ActionTimer == 0) {
+				if (p2ActionTimer <= 0) {
 					anim.SetInteger ("FightMove", 5);
 					patrickAnim.SetInteger ("PatrickFightMove", Random.Range (6, 10));
 					attackVoice1 = Random.Range (1, 3);
@@ -1047,6 +1071,16 @@ public class GameManager : MonoBehaviour {
 				if (Input.GetMouseButtonDown (0)) {
 
 					Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+                    for (int i =0; i< hitFx.Length; i++)
+                    {
+                        if (!hitFx[i].GetComponent<Animation>().isPlaying)
+                        {
+                            hitFx[i].transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                            hitFx[i].GetComponent<Animation>().Play();
+                            break;
+                        }    
+                    }
+
 					if (Physics.Raycast (ray, out hit)) {
 						if (hit.collider.gameObject.name == ("ClickArea")) {
 
@@ -1122,16 +1156,17 @@ public class GameManager : MonoBehaviour {
 
 			// --- Entering strolling mode from fighting mode ---
 			if (strollingStart) {
-				strollingTimer--;
+				strollingTimer -= Time.deltaTime * 100f;
 			}
 
-			if (strollingTimer == 0) {
+			if (strollingTimer <= 0) {
 				strollingStart = false;
 				screenShut = true;
 				screenEnlarge = false;
 				Initial ();
 				fight = false;
-				p1Script.joystick.SetActive (true);
+                hitFxPool.SetActive(false);
+                //p1Script.joystick.SetActive (true);
 
 				prologue = false;
 
@@ -1230,8 +1265,8 @@ public class GameManager : MonoBehaviour {
 
 		panelText.text = " ";
 		pauseText.text = " ";
-		
-	}
+
+    }
 
 	void charsNotAppear () {
 
@@ -1365,12 +1400,17 @@ public class GameManager : MonoBehaviour {
 			cakKumis.transform.localScale = new Vector3 (1, 1, 1);
 			chat = false;
 			moneyChecked = false;
-			p1Script.joystick.SetActive (true);
+			//p1Script.joystick.SetActive (true);
 			anim.SetInteger ("FightMove", 0);
 			cakKumis.SetActive (true);
 			chatKumis = false;
 
-			if (bajayOn && bajayStop) {
+            blocker.SetActive(false);
+
+            if (prologue)
+                p1Script.joystick.SetActive(true);
+
+            if (bajayOn && bajayStop) {
 
 				player1.transform.position = new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z + 1f);
 				bajayStop = false;
@@ -1499,7 +1539,8 @@ public class GameManager : MonoBehaviour {
 			savePositionP2 = new Vector3 (patrick.transform.position.x, patrick.transform.position.y, patrick.transform.position.z);
 
 			chat = false;
-		}
+            blocker.SetActive(false);
+        }
 				
 	}
 
@@ -1528,8 +1569,12 @@ public class GameManager : MonoBehaviour {
 			cakKumis.transform.localScale = new Vector3 (1, 1, 1);
 			chat = false;
 			moneyChecked = false;
-			p1Script.joystick.SetActive (true);
-		}
+			//p1Script.joystick.SetActive (true);
+            blocker.SetActive(false);
+            if (prologue)
+                p1Script.joystick.SetActive(true);
+
+        }
 
 	}
 
@@ -1572,8 +1617,9 @@ public class GameManager : MonoBehaviour {
 
 			chat = false;
 			moneyChecked = false;
-			p1Script.joystick.SetActive (true);
-		}
+			//p1Script.joystick.SetActive (true);
+            blocker.SetActive(false);
+        }
 		
 	}
 
@@ -1758,5 +1804,17 @@ public class GameManager : MonoBehaviour {
 		}
 
 	}
+
+    public bool TargetVisible(Camera c, GameObject go)
+    {
+        var planes = GeometryUtility.CalculateFrustumPlanes(c);
+        var point = go.transform.position;
+        foreach (var plane in planes)
+        {
+            if (plane.GetDistanceToPoint(point) < 0)
+                return false;
+        }
+        return true;
+    }
 
 }

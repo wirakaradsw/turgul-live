@@ -66,7 +66,10 @@ public class TournamentScript : MonoBehaviour {
 	[HideInInspector] public RectTransform p2Def1Inactive;
 	[HideInInspector] public RectTransform p2Def2Inactive;
 
-	public AudioSource bGMusic;
+    public GameObject hitFxPool;
+    public GameObject[] hitFx;
+
+    public AudioSource bGMusic;
 	public AudioSource attack1Voice;
 	public AudioSource attack2Voice;
 	public AudioSource attack3Voice;
@@ -145,27 +148,27 @@ public class TournamentScript : MonoBehaviour {
 	int p1Id = 0;
 	int p2Id = 0;
 
-	int readyToFightTimer = 80;
-	int readyToFightTimerMax = 80;
-	int fightStartTimer = 40;
-	int fightStartTimerMax = 40;
-	int p2ActionTimer = 40;
-	int p2ActionTimerInit = 40;
-	int addDefBarTimer = 100;
-	int addDefBarTimerInit = 100;
+	float readyToFightTimer = 80;
+    float readyToFightTimerMax = 80;
+    float fightStartTimer = 40;
+    float fightStartTimerMax = 40;
+    float p2ActionTimer = 40;
+    float p2ActionTimerInit = 40;
+    float addDefBarTimer = 100;
+    float addDefBarTimerInit = 100;
 	int p1RanAttack = 0;
 	int p2RanAttack = 0;
 
-	int strollingTimer = 200;
-	int strollingTimerMax = 200;
+    float strollingTimer = 200;
+    float strollingTimerMax = 200;
 
 	int attackVoice1 = 0;
 	int attackVoice2 = 0;
 
-	[HideInInspector] public int p1SAttack3Timer = 40;
-	[HideInInspector] public int p1SAttack3TimerMax = 40;
-	[HideInInspector] public int p2SAttack3Timer = 40;
-	[HideInInspector] public int p2SAttack3TimerMax = 40;
+	[HideInInspector] public float p1SAttack3Timer = 40;
+	[HideInInspector] public float p1SAttack3TimerMax = 40;
+	[HideInInspector] public float p2SAttack3Timer = 40;
+	[HideInInspector] public float p2SAttack3TimerMax = 40;
 	
 	float p1HBarTrnmtX;
 	
@@ -513,7 +516,7 @@ public class TournamentScript : MonoBehaviour {
 
 			// --- Fight Opening ---
 			if (opening) {
-				readyToFightTimer--;
+                readyToFightTimer -= Time.deltaTime * 80f;
 
 				if (p1Id == 1) {
 					p1Anim.SetInteger ("FightMove", 1);
@@ -522,14 +525,14 @@ public class TournamentScript : MonoBehaviour {
 					p2Anim.SetInteger ("FightMove", 1);
 				} else if (p2Id == 4) {
 					p2Anim.SetInteger ("FightMove", 19);
-					player2.transform.position = new Vector3 (4, player2.transform.position.y + (0 - player2.transform.position.y) * 0.1f, 0);
+					player2.transform.position = new Vector3 (4f, player2.transform.position.y + (0 - player2.transform.position.y) * 0.1f, 0);
 
 					if (jumpSound.isPlaying == false) {
 						jumpSound.Play ();
 					}
 
-					if (player2.transform.position.y < 0.8) {
-						player2.transform.position = new Vector3 (4, 0, 0);
+					if (player2.transform.position.y < 0.8f) {
+						player2.transform.position = new Vector3 (4f, 0, 0);
 					}
 				}
 
@@ -541,29 +544,30 @@ public class TournamentScript : MonoBehaviour {
 				p2DefBar.sizeDelta = new Vector2 (0, p2DefBar.rect.height);
 			}
 
-			if (readyToFightTimer == 60) {
+			if (readyToFightTimer <= 60f && readyToFightTimer > 50f) {
 
 				if (p2Id == 4) {
 					p2Anim.SetInteger ("FightMove", 1);
 				}
 			}
 		
-			if (readyToFightTimer == 0) {
+			if (readyToFightTimer <= 0) {
 				opening = false;
 				readyToFightTimer = readyToFightTimerMax;
 
 				p1Anim.SetInteger ("FightMove", 2);
 				p2Anim.SetInteger ("FightMove", 2);
 				fightStart = true;
-			}
+                hitFxPool.SetActive(true);
+            }
 		
 			if (fightStart) {
-				fightStartTimer --;
+                fightStartTimer -= Time.deltaTime * 80f;
 			
 				FightScene ();
 			}
 		
-			if (fightStartTimer == 0) {
+			if (fightStartTimer <= 0) {
 				fightStart = false;
 				fightStartTimer = fightStartTimerMax;
 				p1MoveFwd = true;
@@ -593,7 +597,7 @@ public class TournamentScript : MonoBehaviour {
 				fighting = true;
 			}
 		
-			if (p2ActionTimer == (p2ActionTimerInit - 10) && fighting) {
+			if (p2ActionTimer <= (p2ActionTimerInit - 10) && p2ActionTimer > (p2ActionTimerInit - 11) && fighting) {
 				p1Anim.SetInteger ("FightMove", 2);
 				p2Anim.SetInteger ("FightMove", 2);
 				player1.transform.position = new Vector3 (player1.transform.position.x + ((-2f - player1.transform.position.x) * 0.5f), player1.transform.position.y, player1.transform.position.z);
@@ -601,17 +605,17 @@ public class TournamentScript : MonoBehaviour {
 			}
 		
 			if (fighting) {
-			
-				p2ActionTimer --;
-				addDefBarTimer --;
-			
-				if (addDefBarTimer == 0) {
+
+                p2ActionTimer -= Time.deltaTime * 80f;
+                addDefBarTimer -= Time.deltaTime * 80f;
+
+                if (addDefBarTimer <= 0) {
 					p1DefBar.sizeDelta = new Vector2 (p1DefBar.rect.width + defPoint, p1DefBar.rect.height);
 					p2DefBar.sizeDelta = new Vector2 (p2DefBar.rect.width + defPoint, p2DefBar.rect.height);
 					addDefBarTimer = addDefBarTimerInit;
 				}
 			
-				if (p2ActionTimer == 0) {
+				if (p2ActionTimer <= 0) {
 					p1Anim.SetInteger ("FightMove", 5);
 					if (!p2Raging && p2Id != 7) {
 						p2Anim.SetInteger ("FightMove", Random.Range (6, 10));
@@ -686,7 +690,17 @@ public class TournamentScript : MonoBehaviour {
 				if (Input.GetMouseButtonDown (0)) {
 				
 					Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-					if (Physics.Raycast (ray, out hit)) {
+                    for (int i = 0; i < hitFx.Length; i++)
+                    {
+                        if (!hitFx[i].GetComponent<Animation>().isPlaying)
+                        {
+                            hitFx[i].transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                            hitFx[i].GetComponent<Animation>().Play();
+                            break;
+                        }
+                    }
+
+                    if (Physics.Raycast (ray, out hit)) {
 						if (hit.collider.gameObject.name == ("ClickArea")) {
 						
 							p2ActionTimer = p2ActionTimerInit;
@@ -1104,10 +1118,10 @@ public class TournamentScript : MonoBehaviour {
 
 			// --- Entering strolling mode from fighting mode ---
 			if (strollingStart) {
-				strollingTimer--;
-			}
+                strollingTimer -= Time.deltaTime * 50f;
+            }
 		
-			if (strollingTimer == 0) {
+			if (strollingTimer <= 0) {
 				strollingStart = false;
 
 				if (p1HBar.GetComponent<RectTransform> ().rect.width <= 0 && rageMode && !p1Raging) {
