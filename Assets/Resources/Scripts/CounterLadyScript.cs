@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CounterLadyScript : MonoBehaviour {
+public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
 
 	GameManager manager;
 	Player1Script p1Script;
@@ -112,5 +113,9 @@ public class CounterLadyScript : MonoBehaviour {
         manager.blocker.SetActive(true);
     }
 
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
+    }
 
 }

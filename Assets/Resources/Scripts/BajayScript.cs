@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class BajayScript : MonoBehaviour {
+public class BajayScript : MonoBehaviour, IPointerDownHandler {
 
 	GameManager manager;
 	Player1Script p1Script;
@@ -98,6 +99,11 @@ public class BajayScript : MonoBehaviour {
             manager.player1.transform.position = new Vector3(manager.player1.transform.position.x, manager.player1.transform.position.y, -2f);
             transform.position = new Vector3(manager.player1.transform.position.x, transform.position.y, transform.position.z);
         }
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
     }
 
 }

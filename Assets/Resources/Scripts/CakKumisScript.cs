@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CakKumisScript : MonoBehaviour {
+public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
 	
 	GameManager manager;
 	Player1Script p1Script;
@@ -97,6 +98,11 @@ public class CakKumisScript : MonoBehaviour {
             ChatOn();
             manager.blocker.SetActive(true);
         }   
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
     }
 
 }

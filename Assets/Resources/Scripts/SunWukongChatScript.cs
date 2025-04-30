@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class SunWukongChatScript : MonoBehaviour {
+public class SunWukongChatScript : MonoBehaviour, IPointerDownHandler {
 
 	GameManager manager;
 	Player1Script p1Script;
@@ -66,6 +67,11 @@ public class SunWukongChatScript : MonoBehaviour {
             ChatOn();
             manager.blocker.SetActive(true);
         }
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
     }
 
 }

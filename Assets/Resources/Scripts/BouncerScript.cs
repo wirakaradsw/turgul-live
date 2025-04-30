@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class BouncerScript : MonoBehaviour {
+public class BouncerScript : MonoBehaviour, IPointerDownHandler {
 
 	GameManager manager;
 	Player1Script p1Script;
@@ -83,6 +84,11 @@ public class BouncerScript : MonoBehaviour {
     {
         ChatOn();
         manager.blocker.SetActive(true);
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
     }
 
 }

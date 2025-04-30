@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class PatrickScript : MonoBehaviour {
+public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 
 	GameManager manager;
 	Player1Script p1Script;
@@ -652,6 +653,11 @@ public class PatrickScript : MonoBehaviour {
             ChatOn();
             manager.blocker.SetActive(true);
         } 
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+		OnMouseDown();
     }
 
 }
