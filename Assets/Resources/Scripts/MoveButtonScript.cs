@@ -33,8 +33,16 @@ public class MoveButtonScript : MonoBehaviour
 
     public void OnMouseDown()
     {
-        p1Script.OnMoveLeft(true);
-        moveL = true;
+        //p1Script.OnMoveLeft(true);
+        //moveL = true;
+        if (!manager.chat)
+        {
+            if (manager.chapter == 2)
+            {
+                manager.actionChapter2 = true;
+            }
+        }
+        gameObject.SetActive(false);
     }
 
     public void OnMouseUp()

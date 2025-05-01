@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour {
 
@@ -202,7 +203,12 @@ public class GameManager : MonoBehaviour {
 	public bool bajayOn = false;
 	public bool bajayStop = false;
 
-	Vector3 savePositionP1;
+	[HideInInspector] public bool actionChapter2 = false;
+
+    private Vector3 targetAction2 = Vector3.zero;
+
+
+    Vector3 savePositionP1;
 	Vector3 savePositionP2;
 
 	RaycastHit hit;
@@ -298,7 +304,15 @@ public class GameManager : MonoBehaviour {
 
 		charsNotAppear ();
 		kintoun.SetActive (false);
-	}
+
+		if (prologue)
+		{
+            //if (chapter == 2)
+            //    MoveLeftButton.SetActive(true);
+        }	
+
+		targetAction2 = new Vector3(-2.1f, 0.0f, 0.0f);
+    }
 	
 	void Update () {
 
@@ -333,12 +347,13 @@ public class GameManager : MonoBehaviour {
 			pauseText.text = "PAUSE";
 
 		}
-		
+
 		// --- CHEAT CODES ---
-//		if (Input.GetKeyDown (KeyCode.F1)) {
-//			PlayerPrefs.SetInt ("matchNumb", 2);
-//		}
-		
+		if (Input.GetKeyDown(KeyCode.F1))
+		{
+			PlayerPrefs.SetInt("matchNumb", 2);
+		}
+
 		if (Input.GetKeyDown (KeyCode.F2) && Input.GetKeyDown (KeyCode.F4)) {
 			if (!gotSomethingSound.isPlaying){
 				gotSomethingSound.Play ();
@@ -360,9 +375,15 @@ public class GameManager : MonoBehaviour {
 
 		if (PlayerPrefs.GetInt ("success") == 1) {
 			PlayerPrefs.SetInt ("rageMode", 0);
-		}
+        }
 
-		if (Time.timeScale != 0) {
+        if (actionChapter2)
+		{
+            player1.transform.position = Vector3.MoveTowards(player1.transform.position, targetAction2, 5.0f * Time.deltaTime);
+			anim.SetBool("Walk", true);
+        }			
+
+        if (Time.timeScale != 0) {
 
 			if (chapter == 1) {
                 chapTextTime -= Time.deltaTime * 100f;
@@ -409,6 +430,7 @@ public class GameManager : MonoBehaviour {
                     if (!hihiSound.isPlaying) {
 						hihiSound.Play ();
 					}
+					actionChapter2 = false;
 					chat = true;
                     //MoveLeftButton.SetActive(false);
                     p1Script.joystick.SetActive(false);
@@ -797,7 +819,8 @@ public class GameManager : MonoBehaviour {
 					moneyAppearPlus = true;
 
 					chat = true;
-					panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
+                    blocker.SetActive(true);
+                    panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 					panelText.text = "You received $" + moneyTournament + " from the last match.";
 					leaveButton.GetComponentInChildren<Text> ().text = "OK";
 					leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
@@ -865,7 +888,8 @@ public class GameManager : MonoBehaviour {
 					patrick.transform.position = savePositionP2;
 
 					chat = true;
-					panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
+                    blocker.SetActive(true);
+                    panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 					leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
 
 					if (justPossessed) {
@@ -1408,7 +1432,11 @@ public class GameManager : MonoBehaviour {
             blocker.SetActive(false);
 
             if (prologue)
-                p1Script.joystick.SetActive(true);
+			{
+                if (chapter == 2)
+					MoveLeftButton.SetActive(true);
+            }
+
 
             if (bajayOn && bajayStop) {
 
@@ -1571,8 +1599,8 @@ public class GameManager : MonoBehaviour {
 			moneyChecked = false;
 			//p1Script.joystick.SetActive (true);
             blocker.SetActive(false);
-            if (prologue)
-                p1Script.joystick.SetActive(true);
+            /*if (prologue)
+                p1Script.joystick.SetActive(true);*/
 
         }
 
