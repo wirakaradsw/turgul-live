@@ -1478,6 +1478,7 @@ public class GameManager : MonoBehaviour {
     public void ChatOn()
 	{
         chat = true;
+		jumpSound.Play();
 		BoxColliderOff();
         blocker.SetActive(true);
         panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
