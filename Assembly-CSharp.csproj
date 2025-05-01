@@ -161,6 +161,7 @@
     <Compile Include="Assets\Packages\ProCamera2D\Core\Common\BaseTrigger.cs" />
     <Compile Include="Assets\Resources\Scripts\GUIScript.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouch\Plugins\EasyTouch.cs" />
+    <Compile Include="Assets\Resources\Scripts\SpriteSheetScript.cs" />
     <Compile Include="Assets\Packages\ProCamera2D\Examples\Platformer\Scripts\ToggleCinematics.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouch\Example\UnityUI\UICompatibility\GlobalEasyTouchEvent.cs" />
     <Compile Include="Assets\Packages\ProCamera2D\Core\Common\Utils\Utils.cs" />
@@ -238,7 +239,6 @@
     <Compile Include="Assets\Resources\Scripts\GletserTrainingScript.cs" />
     <Compile Include="Assets\Resources\Scripts\KBHScript.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouch\Plugins\Gesture.cs" />
-    <Compile Include="Assets\Resources\Scripts\SpriteSheetScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\EasyTouchBundle\Readme.txt" />
