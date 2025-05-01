@@ -37,10 +37,10 @@ public class MoveButtonScript : MonoBehaviour
         //moveL = true;
         if (!manager.chat)
         {
-            if (manager.chapter == 2)
-            {
-                manager.actionChapter2 = true;
-            }
+            //if (manager.chapter == 2)
+            //{
+                manager.actionChapter = true;
+            //}
         }
         gameObject.SetActive(false);
     }

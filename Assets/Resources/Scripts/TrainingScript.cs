@@ -139,7 +139,8 @@ public class TrainingScript : MonoBehaviour {
 	public GameObject loadingScene;
 	public Image loadingBar;
 	public Text loadingText;
-	
+
+	public float strengthValue = 27f;
 
 	void Start () {
 
@@ -354,7 +355,7 @@ public class TrainingScript : MonoBehaviour {
                     if (Physics.Raycast (ray, out hit)) {
 						if (hit.collider.gameObject.name == ("ClickArea")) {
 						
-							player1.transform.position = new Vector3 (player1.transform.position.x + 20f * Time.deltaTime, player1.transform.position.y, player1.transform.position.z);
+							player1.transform.position = new Vector3 (player1.transform.position.x + strengthValue * Time.deltaTime, player1.transform.position.y, player1.transform.position.z);
 						
 						}
 					}

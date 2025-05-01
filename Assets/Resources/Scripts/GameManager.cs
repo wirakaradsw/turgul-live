@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour {
 	public bool bajayOn = false;
 	public bool bajayStop = false;
 
-	[HideInInspector] public bool actionChapter2 = false;
+	[HideInInspector] public bool actionChapter = false;
 
     private Vector3 targetAction2 = Vector3.zero;
 
@@ -368,17 +368,18 @@ public class GameManager : MonoBehaviour {
 			}
 			PlayerPrefs.SetInt ("quickMode", 1);
 		}
-		
-//		if (Input.GetKeyDown (KeyCode.F3)) {
-//			PlayerPrefs.SetInt ("matchNumb", 3);
-//		}
+
+		if (Input.GetKeyDown(KeyCode.F3))
+		{
+			PlayerPrefs.SetInt("matchNumb", 3);
+		}
 		// -------------------
 
 		if (PlayerPrefs.GetInt ("success") == 1) {
 			PlayerPrefs.SetInt ("rageMode", 0);
         }
 
-        if (actionChapter2)
+        if (actionChapter)
 		{
             player1.transform.position = Vector3.MoveTowards(player1.transform.position, targetAction2, 5.0f * Time.deltaTime);
 			anim.SetBool("Walk", true);
@@ -431,7 +432,7 @@ public class GameManager : MonoBehaviour {
                     if (!hihiSound.isPlaying) {
 						hihiSound.Play ();
 					}
-					actionChapter2 = false;
+					actionChapter = false;
 					chat = true;
                     //MoveLeftButton.SetActive(false);
                     p1Script.joystick.SetActive(false);
@@ -530,7 +531,8 @@ public class GameManager : MonoBehaviour {
 			
 				if (player1.transform.position.x < -2f && player1.transform.position.x > -4f && prologue && !dynamicCam) {
 
-					chat = true;
+                    actionChapter = false;
+                    chat = true;
                     //MoveLeftButton.SetActive(false);
                     p1Script.joystick.SetActive(false);
                     p1Script.OnMoveLeft(false);
@@ -642,8 +644,9 @@ public class GameManager : MonoBehaviour {
                 }
 			
 				if (player1.transform.position.x < -2f && player1.transform.position.x > -4f && prologue && p1HBar.GetComponent<RectTransform> ().rect.width == 300) {
-				
-					chat = true;
+
+                    actionChapter = false;
+                    chat = true;
                     //MoveLeftButton.SetActive(false);
                     p1Script.joystick.SetActive(false);
                     p1Script.OnMoveLeft(false);
@@ -1461,7 +1464,7 @@ public class GameManager : MonoBehaviour {
 
             if (prologue)
 			{
-                if (chapter == 2)
+                if (chapter == 2 || chapter == 3)
 					MoveLeftButton.SetActive(true);
             }
 
@@ -1627,8 +1630,8 @@ public class GameManager : MonoBehaviour {
 			moneyChecked = false;
 			//p1Script.joystick.SetActive (true);
             blocker.SetActive(false);
-            /*if (prologue)
-                p1Script.joystick.SetActive(true);*/
+            if (prologue)
+                MoveLeftButton.SetActive(true);
 
         }
 

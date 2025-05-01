@@ -189,6 +189,9 @@ public class BambangEnding : MonoBehaviour {
 			PlayerPrefs.SetInt ("chapter", 5);
 		}else if (PlayerPrefs.GetInt ("chapter") == 3) {
 			PlayerPrefs.SetInt ("chapter", 4);
+			if (PlayerPrefs.GetFloat("p1HBarX") >= 300f) {
+                PlayerPrefs.SetFloat("p1HBarX", 280f);
+            }
 		}else if (PlayerPrefs.GetInt ("chapter") == 2) {
 			PlayerPrefs.SetInt ("chapter", 3);
 		}else if (PlayerPrefs.GetInt ("chapter") == 1) {
