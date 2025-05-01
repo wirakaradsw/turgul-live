@@ -55,24 +55,21 @@ public class BajayScript : MonoBehaviour, IPointerDownHandler {
 
 			if (manager.bajayStop) {
 				p1Script.joystick.SetActive (false);
-				manager.chat = true;
+				manager.ChatOn();
 				manager.screenSrink = true;
 				manager.screenEnlarge = false;
 				manager.screenShut = false;
 			
-				manager.panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 				manager.panelText.text = "BAJURI:\n\n" +
 					"Any place you wanna go?\nJust hop in and I'll drive you there.";
 
 				if (manager.moneyPoint >= 40) {
 					manager.leaveButton.GetComponentInChildren<Text> ().text = "No thanks";
 					manager.leaveButton.GetComponentInChildren<Text> ().fontSize = 14;
-					manager.leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
 					manager.trainingButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (-140, 6);
 				} else if (manager.moneyPoint < 40) {
 					manager.leaveButton.GetComponentInChildren<Text> ().text = "I don't have enough money";
 					manager.leaveButton.GetComponentInChildren<Text> ().fontSize = 10;
-					manager.leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
 				}
 
 				transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
@@ -95,7 +92,6 @@ public class BajayScript : MonoBehaviour, IPointerDownHandler {
     {
         if (!manager.fight && manager.bajayOn)
         {
-            manager.blocker.SetActive(true);
             manager.player1.transform.position = new Vector3(manager.player1.transform.position.x, manager.player1.transform.position.y, -2f);
             transform.position = new Vector3(manager.player1.transform.position.x, transform.position.y, transform.position.z);
         }

@@ -54,12 +54,11 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
     void ChatOn ()
     {
         p1Script.joystick.SetActive(false);
-        manager.chat = true;
+        manager.ChatOn();
         manager.screenSrink = true;
         manager.screenEnlarge = false;
         manager.screenShut = false;
 
-        manager.panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
         manager.panelText.text = "CHAK KUMIS:\n" +
             "Tay... SATAY...!!!\nTen sticks just for $15";
 
@@ -88,12 +87,10 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
             if (manager.moneyPoint >= 15)
             {
                 manager.satayButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(-140, 6);
-                manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
                 manager.leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
             }
             if (manager.moneyPoint < 15)
             {
-                manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
                 manager.leaveButton.GetComponentInChildren<Text>().text = "I don't have enough money";
                 manager.leaveButton.GetComponentInChildren<Text>().fontSize = 10;
             }
@@ -101,7 +98,6 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
         }
         else
         {
-            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
             manager.leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
         }
     }
@@ -111,7 +107,6 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
         if (!manager.fight)
         {
             ChatOn();
-            manager.blocker.SetActive(true);
         }   
     }
 

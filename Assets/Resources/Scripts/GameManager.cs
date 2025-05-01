@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
 
@@ -818,12 +819,9 @@ public class GameManager : MonoBehaviour {
 					moneyDynamicPoint = moneyTournament;
 					moneyAppearPlus = true;
 
-					chat = true;
-                    blocker.SetActive(true);
-                    panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
+					ChatOn();
 					panelText.text = "You received $" + moneyTournament + " from the last match.";
 					leaveButton.GetComponentInChildren<Text> ().text = "OK";
-					leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
 				}
 				player1.transform.position = new Vector3 (20, 0, -1);
 				player1.transform.localScale = new Vector3 (-1, 1, 1);
@@ -887,10 +885,7 @@ public class GameManager : MonoBehaviour {
 					player1.transform.position = savePositionP1;
 					patrick.transform.position = savePositionP2;
 
-					chat = true;
-                    blocker.SetActive(true);
-                    panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
-					leaveButton.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (140, 6);
+					ChatOn();
 
 					if (justPossessed) {
 						darkScene.SetActive (false);
@@ -1290,6 +1285,8 @@ public class GameManager : MonoBehaviour {
 		panelText.text = " ";
 		pauseText.text = " ";
 
+        BoxColliderOn();
+
     }
 
 	void charsNotAppear () {
@@ -1407,6 +1404,37 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+	void BoxColliderOn()
+	{
+        patrick.gameObject.transform.GetChild(1).gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        ron.GetComponent<BoxCollider2D>().enabled = true;
+		kitaro.GetComponent<BoxCollider2D>().enabled = true;
+		sunWukong.GetComponent<BoxCollider2D>().enabled = true;
+		cakKumis.GetComponent<BoxCollider2D>().enabled = true;
+		counterLady.GetComponent<BoxCollider2D>().enabled = true;
+		bouncer.GetComponent<BoxCollider2D>().enabled = true;
+	}
+
+    void BoxColliderOff()
+    {
+        patrick.gameObject.transform.GetChild(1).gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        ron.GetComponent<BoxCollider2D>().enabled = false;
+        kitaro.GetComponent<BoxCollider2D>().enabled = false;
+        sunWukong.GetComponent<BoxCollider2D>().enabled = false;
+        cakKumis.GetComponent<BoxCollider2D>().enabled = false;
+        counterLady.GetComponent<BoxCollider2D>().enabled = false;
+        bouncer.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void ChatOn()
+	{
+        chat = true;
+		BoxColliderOff();
+        blocker.SetActive(true);
+        panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
+    }
 
 	public void OnClickedLeave (Button leaveButton) {
 

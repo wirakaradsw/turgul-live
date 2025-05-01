@@ -43,7 +43,7 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
     void ChatOn()
     {
         p1Script.joystick.SetActive(false);
-        manager.chat = true;
+        manager.ChatOn();
         manager.screenSrink = true;
         manager.screenEnlarge = false;
         manager.screenShut = false;
@@ -51,8 +51,6 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
         manager.leaveButton.GetComponentInChildren<Text>().fontSize = 14;
 
         manager.patrickAppear = true;
-
-        manager.panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
         if (manager.player1.transform.position.x > transform.position.x)
         {
@@ -86,12 +84,10 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
             if (manager.moneyPoint >= 100)
             {
                 manager.registerButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(-140, 6);
-                manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
                 manager.leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
             }
             if (manager.moneyPoint < 100)
             {
-                manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
                 manager.leaveButton.GetComponentInChildren<Text>().text = "I don't have enough money";
                 manager.leaveButton.GetComponentInChildren<Text>().fontSize = 10;
             }
@@ -101,7 +97,6 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
         {
             manager.panelText.text = "COUNTER LADY:\n" +
                 "Please go to the TURGUL ENTRANCE behind to enter the TOURNAMENT.";
-            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
             manager.leaveButton.GetComponentInChildren<Text>().text = "OK";
         }
     }
@@ -110,7 +105,6 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
     {
        //Debug.Log("Sprite Clicked");
         ChatOn();
-        manager.blocker.SetActive(true);
     }
 
     public void OnPointerDown(PointerEventData pointerEventData)

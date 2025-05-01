@@ -593,15 +593,13 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
     void ChatOn()
     {
         p1Script.joystick.SetActive(false);
-        manager.chat = true;
+        manager.ChatOn();
         manager.screenSrink = true;
         manager.screenEnlarge = false;
         manager.screenShut = false;
 
         manager.leaveButton.GetComponentInChildren<Text>().text = "Leave";
         manager.leaveButton.GetComponentInChildren<Text>().fontSize = 14;
-
-        manager.panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
         if (player1.transform.position.x > transform.position.x)
         {
@@ -624,7 +622,6 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
         {
             manager.panelText.text = "PATRICK:\n" +
                 "Aw Bro!\nYou don't look well...\nGet something to eat Bro...";
-            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
             if (manager.moneyPoint < 15)
             {
                 manager.moneyDynamicPoint = 15 - manager.moneyPoint;
@@ -639,7 +636,6 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
             manager.panelText.text = "PATRICK:\n" +
                 "Yo Bro!\nCare to have a sparring match with me?\nIf you WIN, I'll make sure you can enter the TOURNAMENT.\nWell if you LOSE, don't worry, I'll buy you SATAY...";
             manager.fightButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(-140, 6);
-            manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
             manager.fightButton.GetComponentInChildren<Text>().text = "OK";
             manager.leaveButton.GetComponentInChildren<Text>().text = "No Thanks";
         }
@@ -651,7 +647,6 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
         if (!manager.fight)
         {
             ChatOn();
-            manager.blocker.SetActive(true);
         } 
     }
 

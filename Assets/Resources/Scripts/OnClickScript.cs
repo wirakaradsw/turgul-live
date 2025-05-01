@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class OnClickScript : MonoBehaviour
+public class OnClickScript : MonoBehaviour, IPointerDownHandler
 {
     public PatrickScript patrick;
 
@@ -10,5 +11,10 @@ public class OnClickScript : MonoBehaviour
     {
         //Debug.Log("Sprite Clicked");
         patrick.OnMouseDown();
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        OnMouseDown();
     }
 }

@@ -38,15 +38,13 @@ public class SunWukongChatScript : MonoBehaviour, IPointerDownHandler {
     void ChatOn()
     {
         p1Script.joystick.SetActive(false);
-        manager.chat = true;
+        manager.ChatOn();
         manager.screenSrink = true;
         manager.screenEnlarge = false;
         manager.screenShut = false;
 
         manager.leaveButton.GetComponentInChildren<Text>().text = "Leave";
         manager.leaveButton.GetComponentInChildren<Text>().fontSize = 14;
-
-        manager.panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
         manager.player1.transform.position = new Vector3(transform.position.x + 3f, manager.player1.transform.position.y, transform.position.z);
         manager.mainCam.transform.position = new Vector3(-18f, manager.mainCam.transform.position.y, manager.mainCam.transform.position.z);
@@ -57,7 +55,6 @@ public class SunWukongChatScript : MonoBehaviour, IPointerDownHandler {
 
         manager.panelText.text = "Sun Wukong:\n\n" +
             "Wearing this TURTLE SHELL on my back is part of my training to make me become much stronger.";
-        manager.leaveButton.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(140, 6);
     }
 
     public void OnMouseDown()
@@ -65,7 +62,6 @@ public class SunWukongChatScript : MonoBehaviour, IPointerDownHandler {
         if (!manager.fight)
         {
             ChatOn();
-            manager.blocker.SetActive(true);
         }
     }
 
