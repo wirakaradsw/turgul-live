@@ -238,6 +238,7 @@
     <Compile Include="Assets\Resources\Scripts\GletserTrainingScript.cs" />
     <Compile Include="Assets\Resources\Scripts\KBHScript.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouch\Plugins\Gesture.cs" />
+    <Compile Include="Assets\Resources\Scripts\SpriteSheetScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\EasyTouchBundle\Readme.txt" />
