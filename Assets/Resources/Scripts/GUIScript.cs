@@ -97,6 +97,9 @@ public class GUIScript : MonoBehaviour {
 		}
 		
 		if (p1AttBar.GetComponent<RectTransform> ().rect.width >= 100 && p1AttBar.GetComponent<RectTransform> ().rect.width < 200 && fighting) {
+			if (manager.tutorialStep == 6) {
+				manager.pointerHand[6].SetActive(true);
+			}
 			att1Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (att1Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 32f);
 			att2Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (att2Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, -50f);
 			att3Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (att3Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, -50f);
@@ -124,7 +127,10 @@ public class GUIScript : MonoBehaviour {
 		}
 		
 		if (p1DefBar.GetComponent<RectTransform> ().rect.width < 100 && fighting) {
-			def1Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (def1Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 50f);
+            if (manager.tutorialStep == 7){
+                manager.pointerHand[7].SetActive(false);
+            }
+            def1Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (def1Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 50f);
 			def2Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (def2Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 50f);
 			p1Def1Inactive.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (p1Def1Inactive.GetComponentInChildren<RectTransform>().anchoredPosition.x, -72f);
 			p1Def2Inactive.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (p1Def2Inactive.GetComponentInChildren<RectTransform>().anchoredPosition.x, -72f);
@@ -214,7 +220,10 @@ public class GUIScript : MonoBehaviour {
 		}
 
 		if (patrickScript.P2SAttack3){
-			def1Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (def1Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 50f);
+            if (manager.tutorialStep == 7){
+                manager.pointerHand[7].SetActive(false);
+            }
+            def1Button.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2 (def1Button.GetComponentInChildren<RectTransform>().anchoredPosition.x, 50f);
 		}
 
 	}

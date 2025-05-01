@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public GameObject hitFxPool;
     public GameObject[] hitFx;
     public GameObject[] cloudButton;
+	public GameObject[] pointerHand;
 
 	public GameObject player1;
 	public GameObject patrick;
@@ -161,6 +162,8 @@ public class GameManager : MonoBehaviour {
 	public int moneyTournament;
 	public int moneyDynamicPoint = 0;
 
+	public int tutorialStep;
+
 	public float p1HBarX;
 
 	float defPoint = 20f;
@@ -242,7 +245,8 @@ public class GameManager : MonoBehaviour {
 		chapter = PlayerPrefs.GetInt ("chapter");
 		moneyPoint = PlayerPrefs.GetInt ("moneyPoint");
 		moneyTournament = PlayerPrefs.GetInt ("moneyTournament");
-		p1HBarX = PlayerPrefs.GetFloat ("p1HBarX");
+        tutorialStep = PlayerPrefs.GetInt("tutorialStep");
+        p1HBarX = PlayerPrefs.GetFloat ("p1HBarX");
 		registered = PlayerPrefs.GetInt("registered") > 0;
 		p1Lost = PlayerPrefs.GetInt ("p1Lost") > 0;
 		patrickAppear = PlayerPrefs.GetInt ("patrickAppear") > 0;
@@ -396,7 +400,33 @@ public class GameManager : MonoBehaviour {
 					chapTextTime = 0;
 					chapText.text = " ";
 				}
-			}
+
+				if (tutorialStep == 0)
+				{
+					counterLady.SetActive(false);
+					bouncer.SetActive(false);
+					pointerHand[0].SetActive(true);
+				}
+				else if (tutorialStep == 1)
+				{
+					pointerHand[1].SetActive(true);
+                }
+                else if (tutorialStep == 2)
+                {
+					counterLady.SetActive(true);
+					pointerHand[2].SetActive(true);
+                }
+                else if (tutorialStep == 4)
+                {
+                    pointerHand[3].SetActive(false);
+                    pointerHand[4].SetActive(true);
+                }
+                else if (tutorialStep == 5)
+                {
+                    pointerHand[4].SetActive(false);
+                    pointerHand[5].SetActive(true);
+                }
+            }
 			if (chapter == 2) {
 				if (prologue) {
 					chapTextTime -= Time.deltaTime * 100f;
@@ -1092,6 +1122,16 @@ public class GameManager : MonoBehaviour {
 
 				if (Input.GetMouseButtonDown (0)) {
 
+					if (tutorialStep < 5)
+					{
+						AddTutorialStep();
+					}
+					else if (tutorialStep == 5)
+					{
+                        AddTutorialStep();
+                        pointerHand[5].SetActive(false);
+					}
+					
 					Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
                     for (int i =0; i< hitFx.Length; i++)
                     {
@@ -1290,6 +1330,11 @@ public class GameManager : MonoBehaviour {
 
         BoxColliderOn();
 
+		for(int i = 0; i < pointerHand.Length; i++)
+		{
+			pointerHand[i].SetActive (false);
+		}
+
     }
 
 	void charsNotAppear () {
@@ -1446,6 +1491,11 @@ public class GameManager : MonoBehaviour {
 			screenSrink = false;
 			screenEnlarge = true;
 			Initial ();
+
+			if (tutorialStep == 1) {
+                AddTutorialStep();
+            }
+
 			if (player1.transform.position.x == patrick.transform.position.x + 3f) {
 				player1.transform.position = new Vector3 (player1.transform.position.x + 0.01f, player1.transform.position.y, player1.transform.position.z);
 			}
@@ -1588,13 +1638,20 @@ public class GameManager : MonoBehaviour {
 			screenShut = true;
 			screenSrink = false;
 			Initial ();
-			/*if (player1.transform.position.x == patrick.transform.position.x + 3f){
+
+            if (tutorialStep == 3)
+            {
+				pointerHand[3].SetActive(true);
+				bouncer.SetActive(true);
+            }
+
+            /*if (player1.transform.position.x == patrick.transform.position.x + 3f){
 				player1.transform.position = new Vector3 (player1.transform.position.x + 0.01f, player1.transform.position.y, player1.transform.position.z);
 			}
 			if (player1.transform.position.x == patrick.transform.position.x - 3f){
 				player1.transform.position = new Vector3 (player1.transform.position.x - 0.01f, player1.transform.position.y, player1.transform.position.z);
 			}*/
-			savePositionP1 = new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z);
+            savePositionP1 = new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z);
 			savePositionP2 = new Vector3 (patrick.transform.position.x, patrick.transform.position.y, patrick.transform.position.z);
 
 			chat = false;
@@ -1759,6 +1816,10 @@ public class GameManager : MonoBehaviour {
 	public void OnClickedAtt1 (Button att1Button) {
 
 		if (Time.timeScale != 0) {
+			if (tutorialStep == 6) {
+				AddTutorialStep();
+				pointerHand[6].SetActive(false);
+			}
 			fightSound.Play ();
 			fighting = false;
 			p1Script.SAttack1 = true;
@@ -1834,7 +1895,11 @@ public class GameManager : MonoBehaviour {
 
 		if (Time.timeScale != 0) {
 			if (patrickScript.P2SAttack1 || patrickScript.P2SAttack2 || patrickScript.P2SAttack3) {
-				fightSound.Play ();
+                if (tutorialStep == 7) {
+                    AddTutorialStep();
+                    pointerHand[7].SetActive(false);
+                }
+                fightSound.Play ();
 				p1Script.Block = true;
 				p1Script.Dodge = false;
 				p1DefBar.rectTransform.sizeDelta = new Vector2 (p1DefBar.GetComponent<RectTransform> ().rect.width - 100f, p1DefBar.GetComponent<RectTransform> ().rect.height);
@@ -1863,6 +1928,12 @@ public class GameManager : MonoBehaviour {
 		}
 
 	}
+
+	public void AddTutorialStep()
+	{
+        tutorialStep++;
+        PlayerPrefs.SetInt("tutorialStep", tutorialStep);
+    }
 
     public bool TargetVisible(Camera c, GameObject go)
     {

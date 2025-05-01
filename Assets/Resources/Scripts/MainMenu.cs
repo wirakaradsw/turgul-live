@@ -181,7 +181,8 @@ public class MainMenu : MonoBehaviour {
 		PlayerPrefs.SetInt ("bajayOn", 0);
 		PlayerPrefs.SetInt ("notFirstTime", 0);
 		PlayerPrefs.SetInt ("success", 0);
-		LoadLevel ();
+        PlayerPrefs.SetInt("tutorialStep", 0);
+        LoadLevel ();
 	}
 
 	public void OnClickedCont (Button continueButton) {
@@ -210,7 +211,8 @@ public class MainMenu : MonoBehaviour {
 		PlayerPrefs.SetInt ("bajayOn", 1);
 		PlayerPrefs.SetInt ("notFirstTime", 1);
 		PlayerPrefs.SetInt ("success", 1);
-		LoadLevel ();
+        PlayerPrefs.SetInt("tutorialStep", 8);
+        LoadLevel ();
 	}
 
 	public void OnClickedTutorial (Button tutorialButton) {

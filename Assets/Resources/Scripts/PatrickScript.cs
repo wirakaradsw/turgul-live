@@ -262,7 +262,11 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 2) {
 				if (p2SAttack1 || p2SAttack2 || p2SAttack3) {
 					p2SAttackStart = true;
-				}
+
+                    if (manager.tutorialStep == 7) {
+                        manager.pointerHand[7].SetActive(true);
+                    }
+                }
 			}
 		
 			if (p2SAttackStart) {
@@ -280,7 +284,12 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 		
 			if (p2SAttackTimer <= 0) {
 				p2SAttackStart = false;
-				if (p2SAttack1) {
+
+                if (manager.tutorialStep == 7) {
+                    manager.pointerHand[7].SetActive(false);
+                }
+
+                if (p2SAttack1) {
 					patrickAnim.SetInteger ("PatrickFightMove", 10);
 					manager.pukulanVoice.Play ();
 				}

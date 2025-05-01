@@ -48,6 +48,12 @@ public class CounterLadyScript : MonoBehaviour, IPointerDownHandler {
         manager.screenEnlarge = false;
         manager.screenShut = false;
 
+        if (manager.tutorialStep == 2)
+        {
+            manager.pointerHand[2].SetActive(false);
+            manager.AddTutorialStep();
+        }
+
         manager.leaveButton.GetComponentInChildren<Text>().fontSize = 14;
 
         manager.patrickAppear = true;

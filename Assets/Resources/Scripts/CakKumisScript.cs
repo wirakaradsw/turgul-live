@@ -59,6 +59,12 @@ public class CakKumisScript : MonoBehaviour, IPointerDownHandler {
         manager.screenEnlarge = false;
         manager.screenShut = false;
 
+        if (manager.tutorialStep == 0)
+        {
+            manager.pointerHand[0].SetActive (false);
+            manager.AddTutorialStep();
+        }
+
         manager.panelText.text = "CHAK KUMIS:\n" +
             "Tay... SATAY...!!!\nTen sticks just for $15";
 
