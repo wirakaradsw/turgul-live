@@ -193,7 +193,6 @@
     <Compile Include="Assets\Packages\ProCamera2D\3rd Party Plugins Support\PlayMakerActions\ProCamera2DShakeWithPresetAction.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouch\Example\GameExemple\RTSExample\RTSCamera.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayVideo.cs" />
-    <Compile Include="Assets\Scripts\Steamwork.NET\SteamManager.cs" />
     <Compile Include="Assets\Packages\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\Packages\ProCamera2D\Core\Triggers\ProCamera2DTriggerInfluence.cs" />
     <Compile Include="Assets\Packages\ProCamera2D\3rd Party Plugins Support\PlayMakerActions\ProCamera2DShakeAction.cs" />
@@ -940,10 +939,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{C2CFAF45-6DE4-47F4-71D2-55AFF00EE551}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
