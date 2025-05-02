@@ -261,7 +261,8 @@ public class KBHScript : MonoBehaviour {
 		
 			if (tourScript.p2Anim.GetInteger ("FightMove") == 17 && transform.position.x > 3.9f) {
 				tourScript.p2Anim.SetInteger ("FightMove", 2);
-				transform.position = new Vector3 (4f, transform.position.y, transform.position.z);
+                tourScript.p1Anim.SetInteger ("FightMove", 2);
+                transform.position = new Vector3 (4f, transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p2Anim.GetInteger ("FightMove") == 2 && transform.position.x == 4f) {
@@ -514,12 +515,12 @@ public class KBHScript : MonoBehaviour {
 			// --- P2 moves back ---
 			if (tourScript.player1.transform.position.x > 0f && tourScript.player1.transform.position.x < 0.7f) {
 				if (tourScript.p1Anim.GetInteger ("FightMove") == 10 || tourScript.p1Anim.GetInteger ("FightMove") == 11 || tourScript.p1Anim.GetInteger ("FightMove") == 18) {
-					transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 				}
 			}
 		
 			if (moveBack) {
-				transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p2Anim.GetInteger ("FightMove") == 4 && transform.position.x > 4.9f) { // --- P2 is dodging
@@ -579,7 +580,7 @@ public class KBHScript : MonoBehaviour {
 			}
 		
 			if (tourScript.p2Anim.GetInteger ("FightMove") == 16) {
-				transform.position = new Vector3 (transform.position.x + ((4f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((4f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p2Anim.GetInteger ("FightMove") == 16 && transform.position.x < 4.1f) {

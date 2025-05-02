@@ -194,7 +194,8 @@ public class BambangRageScript : MonoBehaviour {
 		
 			if (tourScript.p1Anim.GetInteger ("FightMove") == 17 && transform.position.x < -3.9f) {
 				tourScript.p1Anim.SetInteger ("FightMove", 2);
-				transform.position = new Vector3 (-4f, transform.position.y, transform.position.z);
+                tourScript.p2Anim.SetInteger ("FightMove", 2);
+                transform.position = new Vector3 (-4f, transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p1Anim.GetInteger ("FightMove") == 2 && transform.position.x == -4f) {
@@ -498,12 +499,12 @@ public class BambangRageScript : MonoBehaviour {
 			if (tourScript.player2.transform.position.x < 0f && tourScript.player2.transform.position.x > -0.7f) {
 				if (tourScript.p2Anim.GetInteger ("FightMove") == 10 || tourScript.p2Anim.GetInteger ("FightMove") == 11 ||
 					tourScript.p2Anim.GetInteger ("FightMove") == 18 || (tourScript.P2Id == 6 && tourScript.p2Anim.GetInteger ("FightMove") == 12)) {
-					transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 				}
 			}
 		
 			if (moveBack) {
-				transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p1Anim.GetInteger ("FightMove") == 4 && transform.position.x < -4.9f) { // --- P1 is dodging
@@ -573,7 +574,7 @@ public class BambangRageScript : MonoBehaviour {
 			}
 		
 			if (tourScript.p1Anim.GetInteger ("FightMove") == 16) {
-				transform.position = new Vector3 (transform.position.x + ((-4f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((-4f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (tourScript.p1Anim.GetInteger ("FightMove") == 16 && transform.position.x > -4.1f) {

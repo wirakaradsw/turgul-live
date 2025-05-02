@@ -256,7 +256,8 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 		
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 17 && transform.position.x > 3.9f) {
 				patrickAnim.SetInteger ("PatrickFightMove", 2);
-				transform.position = new Vector3 (4f, transform.position.y, transform.position.z);
+                anim.SetInteger("FightMove", 2);
+                transform.position = new Vector3 (4f, transform.position.y, transform.position.z);
 			}
 		
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 2) {
@@ -471,12 +472,12 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 			// --- Patrick moves back ---
 			if (player1.transform.position.x > 0f && player1.transform.position.x < 0.7f) {
 				if (anim.GetInteger ("FightMove") == 10 || anim.GetInteger ("FightMove") == 11) {
-					transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 				}
 			}
 		
 			if (p2MoveBack) {
-				transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 4 && transform.position.x > 4.9f) { // --- Patrick is dodging
@@ -535,7 +536,7 @@ public class PatrickScript : MonoBehaviour, IPointerDownHandler {
 			}
 		
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 16) {
-				transform.position = new Vector3 (transform.position.x + ((4f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((4f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (patrickAnim.GetInteger ("PatrickFightMove") == 16 && transform.position.x < 4.1f) {

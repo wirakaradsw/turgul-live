@@ -416,7 +416,8 @@ public class Player1Script : MonoBehaviour {
 
 			if (anim.GetInteger ("FightMove") == 17 && transform.position.x < -3.9f) {
 				anim.SetInteger ("FightMove", 2);
-				transform.position = new Vector3 (-4f, transform.position.y, transform.position.z);
+                patrickAnim.SetInteger("PatrickFightMove", 2);
+                transform.position = new Vector3 (-4f, transform.position.y, transform.position.z);
 			}
 
 			if (anim.GetInteger ("FightMove") == 2) {
@@ -580,12 +581,12 @@ public class Player1Script : MonoBehaviour {
 			// --- P1 moves back ---
 			if (patrick.transform.position.x < 0f && patrick.transform.position.x > -0.7f) {
 				if (patrickAnim.GetInteger ("PatrickFightMove") == 10 || patrickAnim.GetInteger ("PatrickFightMove") == 11) {
-					transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+					transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 				}
 			}
 		
 			if (p1MoveBack) {
-				transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((-5f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (anim.GetInteger ("FightMove") == 4 && transform.position.x < -4.9f) { // --- P1 is dodging
@@ -644,7 +645,7 @@ public class Player1Script : MonoBehaviour {
 			}
 		
 			if (anim.GetInteger ("FightMove") == 16) {
-				transform.position = new Vector3 (transform.position.x + ((-4f - transform.position.x) * 0.06f), transform.position.y, transform.position.z);
+				transform.position = new Vector3 (transform.position.x + ((-4f - transform.position.x) * 6f * Time.deltaTime), transform.position.y, transform.position.z);
 			}
 		
 			if (anim.GetInteger ("FightMove") == 16 && transform.position.x > -4.1f) {
