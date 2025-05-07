@@ -563,7 +563,7 @@ public class SunWukongScript : MonoBehaviour {
 			if (standUpTimer <= 0) {
 				standUpStart = false;
 				tourScript.p2Anim.SetInteger ("FightMove", 15); //--- Stand up
-				if (tourScript.p1SAttack3) {
+				if (tourScript.p1SAttack3 || (tourScript.p1SAttack4 && !tourScript.p1Raging)) {
 					tourScript.p1Anim.SetInteger ("FightMove", 2);
 				} else {
 					tourScript.p1Anim.SetInteger ("FightMove", 17);

@@ -229,17 +229,17 @@ public class BambangCosmoScript : MonoBehaviour {
 				sAttackTimer = sAttackTimerMax;
 			}
 		
-			if (tourScript.p1Anim.GetInteger ("FightMove") == 10 || tourScript.p1Anim.GetInteger ("FightMove") == 11) {
-				transform.position = new Vector3 (transform.position.x + ((0.6f - transform.position.x) * 0.4f), transform.position.y, transform.position.z);
-			}
+			//if (tourScript.p1Anim.GetInteger ("FightMove") == 10 || tourScript.p1Anim.GetInteger ("FightMove") == 11) {
+			//	transform.position = new Vector3 (transform.position.x + ((0.6f - transform.position.x) * 0.4f), transform.position.y, transform.position.z);
+			//}
 		
-			if (tourScript.p1Anim.GetInteger ("FightMove") == 18) {
-				transform.position = new Vector3 (transform.position.x + ((0.6f - transform.position.x) * 0.4f), transform.position.y, transform.position.z);
-				Instantiate (Resources.Load ("Prefabs/DakochanShadowR"), new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-				if (!tourScript.swooshSound.isPlaying) {
-					tourScript.swooshSound.Play ();
-				}
-			}
+			//if (tourScript.p1Anim.GetInteger ("FightMove") == 18) {
+			//	transform.position = new Vector3 (transform.position.x + ((0.6f - transform.position.x) * 0.4f), transform.position.y, transform.position.z);
+			//	Instantiate (Resources.Load ("Prefabs/DakochanShadowR"), new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+			//	if (!tourScript.swooshSound.isPlaying) {
+			//		tourScript.swooshSound.Play ();
+			//	}
+			//}
 		
 			if (tourScript.p1SAttack3Start) {
 				tourScript.p1SAttack3Timer -= Time.deltaTime * 80f;
