@@ -359,7 +359,7 @@ public class GameManager : MonoBehaviour {
 			PlayerPrefs.SetInt("matchNumb", 2);
 		}
 
-		if (Input.GetKeyDown (KeyCode.F2) && Input.GetKeyDown (KeyCode.F4)) {
+		if (Input.GetKey (KeyCode.F2) && Input.GetKeyDown (KeyCode.F4)) {
 			if (!gotSomethingSound.isPlaying){
 				gotSomethingSound.Play ();
 			}
