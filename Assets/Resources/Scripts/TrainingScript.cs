@@ -533,7 +533,8 @@ public class TrainingScript : MonoBehaviour {
 			}
 
             cloudButton.SetActive(true);
-		}
+			gletser.GetComponent<BoxCollider2D>().enabled = true;
+        }
 		
 	}
 	
@@ -596,8 +597,8 @@ public class TrainingScript : MonoBehaviour {
 				chat = false;
 				screenSrink = false;
 				screenEnlarge = true;
-
-			}
+                gletser.GetComponent<BoxCollider2D>().enabled = true;
+            }
 
 			Initial ();
 		
@@ -630,6 +631,8 @@ public class TrainingScript : MonoBehaviour {
         screenSrink = true;
         screenEnlarge = false;
         screenShut = false;
+
+		gletser.GetComponent<BoxCollider2D>().enabled = false;
 
         panel.GetComponentInChildren<RectTransform>().anchoredPosition = new Vector2(0, 0);
         if (!notFirstTime && !success)
