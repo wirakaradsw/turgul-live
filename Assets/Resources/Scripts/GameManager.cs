@@ -750,7 +750,7 @@ public class GameManager : MonoBehaviour {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (player1.transform.position.x + 3f, -0.2f, player1.transform.position.z), Quaternion.identity);
 					swipSound.Play ();
 				}
-				if (chap4AttackTimer <= 50f && chap4AttackTimer >49f && chap4P1Attack) {
+				if (chap4AttackTimer <= 50f && chap4AttackTimer >45f && chap4P1Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (sunWukong.transform.position.x, -0.2f, sunWukong.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit2"), new Vector3 (sunWukong.transform.position.x, sunWukong.transform.position.y, sunWukong.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (sunWukong.transform.position.x, sunWukong.transform.position.y, sunWukong.transform.position.z), Quaternion.identity);
@@ -775,7 +775,7 @@ public class GameManager : MonoBehaviour {
 					Instantiate (Resources.Load ("Prefabs/ElectroBall2"), new Vector3 (sunWukong.transform.position.x - 3f, -0.2f, sunWukong.transform.position.z), Quaternion.identity);
 					swipSound.Play ();
 				}
-				if (chap4AttackTimer <= 50f && chap4AttackTimer > 49f && chap4P2Attack) {
+				if (chap4AttackTimer <= 50f && chap4AttackTimer > 45f && chap4P2Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (player1.transform.position.x, 0.2f, player1.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit2"), new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
 					Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (player1.transform.position.x, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
