@@ -489,7 +489,7 @@ public class GameManager : MonoBehaviour {
 					moneyText.enabled = false;
 					player1.transform.localScale = new Vector3 (1, 1, 1);
 					anim.SetInteger ("FightMove", 2);
-					alphaVal += 0.005f;
+					alphaVal += (0.2f * Time.deltaTime);
 					dakochan.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, alphaVal);
 				}
 				if (dakochan.GetComponent<SpriteRenderer> ().color.a > 0.95f && dakochan.activeSelf) {
