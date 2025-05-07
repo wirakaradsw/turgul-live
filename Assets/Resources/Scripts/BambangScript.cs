@@ -319,7 +319,7 @@ public class BambangScript : MonoBehaviour {
 					tourScript.p2SAttack3Timer = tourScript.p2SAttack3TimerMax;
 				}
 
-				if (tourScript.p2Anim.GetInteger ("FightMove") == 12 && tourScript.p2SAttack3Timer <= 39f && tourScript.p2SAttack3Timer > 38f) {
+				if (tourScript.p2Anim.GetInteger ("FightMove") == 12 /*&& tourScript.p2SAttack3Timer <= 39f && tourScript.p2SAttack3Timer > 38f*/) {
 					if (block) {
 						tourScript.p1Anim.SetInteger ("FightMove", 5); // --- P1 blocks
 						tourScript.hitSound.Play ();
