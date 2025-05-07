@@ -200,7 +200,7 @@ public class SunWukongScript : MonoBehaviour {
 			if (wukongJump) {
 				tourScript.p2Anim.SetInteger ("FightMove", 17);
 				transform.position = new Vector3 (transform.position.x,
-			                                 transform.position.y + ((0 - transform.position.y) * 0.1f),
+			                                 transform.position.y + ((0 - transform.position.y) * 5f * Time.deltaTime),
 			                                 transform.position.z);
 
 			}
@@ -460,8 +460,9 @@ public class SunWukongScript : MonoBehaviour {
 					tourScript.p2Anim.SetInteger ("FightMove", 13); // --- P2 got hit
 					tourScript.hitSound.Play ();
 					Instantiate (Resources.Load ("Prefabs/PunchClash3"), new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity);
-					Instantiate (Resources.Load ("Prefabs/Dark"), new Vector3 (0, 0, 0), Quaternion.identity);
-					tourScript.p2HBar.sizeDelta = new Vector2 (tourScript.p2HBar.GetComponent<RectTransform> ().rect.width - (p1SAtt4Damage / 4), tourScript.p2HBar.GetComponent<RectTransform> ().rect.height);
+                    GameObject dark = Instantiate(Resources.Load("Prefabs/Dark"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    dark.transform.localScale = new Vector3(1.2f, 1.2f, 1f);
+                    tourScript.p2HBar.sizeDelta = new Vector2 (tourScript.p2HBar.GetComponent<RectTransform> ().rect.width - (p1SAtt4Damage / 4), tourScript.p2HBar.GetComponent<RectTransform> ().rect.height);
 				
 					p1SAtt4Damage = p1SAtt4Damage / 4;
 					tourScript.hitText.text = "-" + p1SAtt4Damage.ToString ();

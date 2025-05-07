@@ -525,7 +525,7 @@ public class TournamentScript : MonoBehaviour {
 					p2Anim.SetInteger ("FightMove", 1);
 				} else if (p2Id == 4) {
 					p2Anim.SetInteger ("FightMove", 19);
-					player2.transform.position = new Vector3 (4f, player2.transform.position.y + (0 - player2.transform.position.y) * 0.1f, 0);
+					player2.transform.position = new Vector3 (4f, player2.transform.position.y + (0 - player2.transform.position.y) * 5f * Time.deltaTime, 0);
 
 					if (jumpSound.isPlaying == false) {
 						jumpSound.Play ();

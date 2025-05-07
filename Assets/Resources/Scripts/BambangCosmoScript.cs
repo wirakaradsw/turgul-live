@@ -487,8 +487,9 @@ public class BambangCosmoScript : MonoBehaviour {
 						Instantiate (Resources.Load ("Prefabs/SuperBlow2"), new Vector3 (transform.position.x, -0.2f, transform.position.z), Quaternion.identity);
 						Instantiate (Resources.Load ("Prefabs/Hit2"), new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 						Instantiate (Resources.Load ("Prefabs/Hit"), new Vector3 (transform.position.x - 1, transform.position.y, transform.position.z), Quaternion.identity);
-						Instantiate (Resources.Load ("Prefabs/Dark"), new Vector3 (0, 0, 0), Quaternion.identity);
-					}
+                        GameObject dark = Instantiate(Resources.Load("Prefabs/Dark"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                        dark.transform.localScale = new Vector3(1.2f, 1.2f, 1f);
+                    }
 					tourScript.p1HBar.sizeDelta = new Vector2 (tourScript.p1HBar.rect.width - (p2SAtt4Damage / 4), tourScript.p1HBar.GetComponent<RectTransform> ().rect.height);
 				
 					p2SAtt4Damage = p2SAtt4Damage / 4;
