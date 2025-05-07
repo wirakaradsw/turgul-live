@@ -808,7 +808,11 @@ public class GameManager : MonoBehaviour {
 				wukongShadow.SetActive (false);
 				sunWukong.transform.position = new Vector3 (-24, 0, 2);
 				sunWukong.transform.localScale = new Vector3 (1, 1, 1);
-			}
+                if (!fight)
+                    cloudButton[6].SetActive(true);
+                else
+                    cloudButton[6].SetActive(false);
+            }
 
 			if (PlayerPrefs.GetInt ("matchNumb") == 0) {
 				IconInit ();
