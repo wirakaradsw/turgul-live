@@ -703,8 +703,8 @@ public class GameManager : MonoBehaviour {
 					wukongJump = true;
 				}
 				if (kintoun.transform.position.x > 11f) {
-					sunWukong.transform.position = new Vector3 (sunWukong.transform.position.x + ((4f - sunWukong.transform.position.x) * 0.1f),
-				                                           sunWukong.transform.position.y + ((0 - sunWukong.transform.position.y) * 0.1f),
+					sunWukong.transform.position = new Vector3 (sunWukong.transform.position.x + ((4f - sunWukong.transform.position.x) * 3f * Time.deltaTime),
+				                                           sunWukong.transform.position.y + ((0 - sunWukong.transform.position.y) * 3f * Time.deltaTime),
 				                                           sunWukong.transform.position.z);
 				}
 				if (kintoun.transform.position.x > 25f) {
@@ -1688,7 +1688,7 @@ public class GameManager : MonoBehaviour {
 			moneyChecked = false;
 			//p1Script.joystick.SetActive (true);
             blocker.SetActive(false);
-            if (prologue)
+            if (prologue && chapter == 4)
                 MoveLeftButton.SetActive(true);
 
         }
