@@ -1774,7 +1774,7 @@ public class GameManager : MonoBehaviour {
 	IEnumerator LevelCoroutine (){
 		
 		loadingScene.SetActive (true);
-		AsyncOperation async = Application.LoadLevelAsync (3);
+		AsyncOperation async = Application.LoadLevelAsync (8);
 		
 		while (!async.isDone) {
 			float loadProgress = async.progress * 100;
