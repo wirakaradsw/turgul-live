@@ -354,10 +354,10 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// --- CHEAT CODES ---
-		if (Input.GetKeyDown(KeyCode.F1))
-		{
-			PlayerPrefs.SetInt("matchNumb", 2);
-		}
+		//if (Input.GetKeyDown(KeyCode.F1))
+		//{
+		//	PlayerPrefs.SetInt("matchNumb", 2);
+		//}
 
 		if (Input.GetKey (KeyCode.F2) && Input.GetKeyDown (KeyCode.F4)) {
 			if (!gotSomethingSound.isPlaying){
@@ -366,17 +366,18 @@ public class GameManager : MonoBehaviour {
 			moneyPoint = moneyPoint + 100;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Alpha6) && Input.GetKeyDown (KeyCode.Alpha8)) {
-			if (!oioiVoice.isPlaying){
-				oioiVoice.Play ();
-			}
-			PlayerPrefs.SetInt ("quickMode", 1);
-		}
+		//if (Input.GetKeyDown (KeyCode.Alpha6) && Input.GetKeyDown (KeyCode.Alpha8)) {
+		//	if (!oioiVoice.isPlaying){
+		//		oioiVoice.Play ();
+		//	}
+		//	PlayerPrefs.SetInt ("quickMode", 1);
+		//}
 
-		if (Input.GetKeyDown(KeyCode.F3))
-		{
-			PlayerPrefs.SetInt("matchNumb", 3);
-		}
+		//if (Input.GetKeyDown(KeyCode.F3))
+		//{
+		//	PlayerPrefs.SetInt("matchNumb", 3);
+		//}
+
 		// -------------------
 
 		if (PlayerPrefs.GetInt ("success") == 1) {
@@ -680,7 +681,9 @@ public class GameManager : MonoBehaviour {
                     //MoveLeftButton.SetActive(false);
                     p1Script.joystick.SetActive(false);
                     p1Script.OnMoveLeft(false);
-                    player1.transform.localScale = new Vector3 (-1, 1, 1);
+					if (!wukongJump) {
+                        player1.transform.localScale = new Vector3(-1, 1, 1);
+                    }                   
 					anim.SetBool ("Walk", true);
 					player1.transform.position = new Vector3 (player1.transform.position.x + ((-4f - player1.transform.position.x) * 0.1f), player1.transform.position.y, player1.transform.position.z + ((0 - player1.transform.position.z) * 0.1f));
 					camera1.transform.position = new Vector3 (camera1.transform.position.x + ((0f - camera1.transform.position.x) * 0.4f), camera1.transform.position.y, camera1.transform.position.z);
@@ -696,11 +699,11 @@ public class GameManager : MonoBehaviour {
 					anim.SetBool ("Walk", false);
 					healthRestored = false;
 				}
-				if (kintoun.transform.position.x > 10f && kintoun.transform.position.x < 11f) {
-					sunWukong.transform.position = new Vector3 (12, 2, 0);
+				if (kintoun.transform.position.x > 10f && kintoun.transform.position.x < 11f && !wukongJump) {
+                    wukongJump = true;
+                    sunWukong.transform.position = new Vector3 (12, 2, 0);
 					player1.transform.localScale = new Vector3 (1, 1, 1);
-					sunWukongAnim.SetInteger ("FightMove", 17);
-					wukongJump = true;
+					sunWukongAnim.SetInteger ("FightMove", 17);					
 				}
 				if (kintoun.transform.position.x > 11f) {
 					sunWukong.transform.position = new Vector3 (sunWukong.transform.position.x + ((4f - sunWukong.transform.position.x) * 3f * Time.deltaTime),
@@ -742,11 +745,11 @@ public class GameManager : MonoBehaviour {
 				if (chap4Fighting) {
 					chap4AttackTimer -= Time.deltaTime * 100f;
                 }
-				if (chap4AttackTimer < 100f && chap4AttackTimer > 99f && chap4P1Attack) {
+				if (chap4AttackTimer < 100f && chap4AttackTimer > 95f && chap4P1Attack) {
 					anim.SetInteger ("FightMove", 12);
 					sapuJagatVoice.Play ();
 				}
-				if (chap4AttackTimer <= 65f && chap4AttackTimer > 64f && chap4P1Attack) {
+				if (chap4AttackTimer <= 65f && chap4AttackTimer > 60f && chap4P1Attack) {
 					Instantiate (Resources.Load ("Prefabs/SuperBlow"), new Vector3 (player1.transform.position.x + 3f, -0.2f, player1.transform.position.z), Quaternion.identity);
 					swipSound.Play ();
 				}

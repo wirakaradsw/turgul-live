@@ -277,36 +277,36 @@ public class Player1Script : MonoBehaviour {
 		
 			if (!fight) {
 			
-				if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
-					if (transform.position.z < 2f) {
-						p1MoveUpZ = true;
-					}
-				}
+				//if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
+				//	if (transform.position.z < 2f) {
+				//		p1MoveUpZ = true;
+				//	}
+				//}
 			
-				if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
-					if (transform.position.z > -2f) {
-						p1MoveDownZ = true;
-					}
-				}
+				//if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+				//	if (transform.position.z > -2f) {
+				//		p1MoveDownZ = true;
+				//	}
+				//}
 			
-				if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) {
-					p1MoveX = true;
-					if (!chat) {
-						transform.localScale = new Vector3 (1, 1, 1);
-					}
-				}
+				//if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) {
+				//	p1MoveX = true;
+				//	if (!chat) {
+				//		transform.localScale = new Vector3 (1, 1, 1);
+				//	}
+				//}
 
-				if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
-					p1MoveX = true;
-					if (!chat) {
-						transform.localScale = new Vector3 (-1, 1, 1);
-					}
-				}
+				//if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
+				//	p1MoveX = true;
+				//	if (!chat) {
+				//		transform.localScale = new Vector3 (-1, 1, 1);
+				//	}
+				//}
 			
-				if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.A) || Input.GetKeyUp (KeyCode.D)) {
-					p1MoveX = false;
-					anim.SetBool ("Walk", false);
-				}
+				//if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.A) || Input.GetKeyUp (KeyCode.D)) {
+				//	p1MoveX = false;
+				//	anim.SetBool ("Walk", false);
+				//}
 			
 				if (p1MoveUpZ && !chat) {
 				

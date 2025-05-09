@@ -265,7 +265,7 @@ public class TrainingScript : MonoBehaviour {
 				
 					panel.GetComponentInChildren<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 					panelText.text = "GLETSER:\n\n" +
-						"You need to move toward to me by TAPPING THE SCREEN RAPIDLY while I attack you with my SPECIAL TECHNIC." +
+						"You need to move towards me by TAPPING THE SCREEN RAPIDLY while I attack you with my SPECIAL MOVE." +
 						"\nYour aim is to reach to this white line in front of me." +
 						"\nYou will then attack me with one punch." +
 						"\nARE YOU READY?!!";
@@ -640,20 +640,20 @@ public class TrainingScript : MonoBehaviour {
             panelText.text = "GLETSER:\n\n" +
                 "So you want to become stronger ey?\nI can train you to master the COSMO POWER. " +
                 "Don't worry, my training is free." +
-                "\nYou just need to buy one cup of my ICE CREAM for $20 before we start the training." +
+                "\nYou just need to buy one cone of my ICE CREAM for $20 before we start the training." +
                 "\nWhat say you?";
         }
         else if (notFirstTime && !success)
         {
             panelText.text = "GLETSER:\n\n" +
                 "So you wanna have another training session ey?" +
-                "\nNo problem. Just buy one cup of my ICE CREAM for $20 first before we start the training.";
+                "\nNo problem. Just buy one cone of my ICE CREAM for $20 first before we start the training.";
         }
         else if (notFirstTime && success)
         {
             panelText.text = "GLETSER:\n\n" +
-                "Because you have now mastered the COSMO POWER, I give you DISCOUNT 50% off from the price for a cup of ICE CREAM." +
-                "\nSo,do you wanna buy ICE CREAM?";
+                "Because you have now mastered the COSMO POWER, I give you DISCOUNT 50% off from the price for a cone of ICE CREAM." +
+                "\nSo,do you wanna buy an ICE CREAM?";
         }
 
         if (player1.transform.position.x > gletser.transform.position.x)

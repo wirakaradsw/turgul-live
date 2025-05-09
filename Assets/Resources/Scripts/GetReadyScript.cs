@@ -14,7 +14,7 @@ public class GetReadyScript : MonoBehaviour
     public AudioSource bGMusic;
 
     private int matchNumb = 0;
-    private int tournamentNumb = 0;
+    private int chapter = 0;
 
     private bool isLoading = false;
     public GameObject loadingScene;
@@ -24,7 +24,7 @@ public class GetReadyScript : MonoBehaviour
     void Start()
     {
         matchNumb = PlayerPrefs.GetInt("matchNumb");
-        tournamentNumb = PlayerPrefs.GetInt("tournamentNumb");
+        chapter = PlayerPrefs.GetInt("chapter");
 
         // --- Initial Reset
         loadingScene.SetActive(false);
@@ -47,22 +47,22 @@ public class GetReadyScript : MonoBehaviour
             p2X[i].SetActive(false);
         }
 
-        if (tournamentNumb == 1) {
+        if (chapter == 1) {
             chapText.text = "Chapter 1:\n" +
                         "Rookie Tournament\nLet's have a Turgul!";
 
-        } else if (tournamentNumb == 2) {
+        } else if (chapter == 2) {
             chapText.text = "Chapter 2:\n" +
                             "Amateur Tournament\nThe devil within";
             p2BoxX[0].SetActive(false);
 
-        } else if (tournamentNumb == 3) {
+        } else if (chapter == 3) {
             chapText.text = "Chapter 3:\n" +
                             "Pro Tournament\nSuper Heroes";
             p2BoxX[0].SetActive(false);
             p2BoxX[1].SetActive(false);
 
-        } else if (tournamentNumb == 4) {
+        } else if (chapter == 4) {
             chapText.text = "Last Chapter:\n" +
                             "Grand Tournament\nThe power within";
             p2BoxX[0].SetActive(false);
